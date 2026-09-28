@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Josh's Client Place — Meridian Capital Services</title>
+<meta name="description" content="Forward-Deployed PM workspace for the Meridian Capital Services engagement." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f7fa;
+    --surface: #ffffff;
+    --ink-900: #0f0f10;
+    --ink-800: #1a1a1c;
+    --ink-700: #2a2a2d;
+    --ink-600: #48484d;
+    --ink-500: #6b6b72;
+    --ink-400: #97979d;
+    --ink-300: #c4c4c9;
+    --ink-200: #e3e3e5;
+    --ink-100: #eeeef0;
+    --ink-050: #f6f6f6;
+    --accent: #16a34a;
+    --accent-600: #15803d;
+    --accent-500: #22c55e;
+    --accent-100: #dcfce7;
+    --accent-050: #f0fdf4;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --shadow-sm: 0 1px 2px rgba(15, 15, 16, 0.04);
+    --shadow-md: 0 4px 16px rgba(15, 15, 16, 0.06);
+    --shadow-lg: 0 24px 64px -12px rgba(15, 15, 16, 0.18);
+    --ease: cubic-bezier(0.22, 0.98, 0.36, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--paper);
+    color: var(--ink-900);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--accent-100); color: var(--ink-900); }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    padding: 72px 0 48px;
+    animation: fade-in 0.4s var(--ease);
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-500);
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    color: var(--ink-900);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: var(--ink-600);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .situation {
+    background: var(--surface);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    animation: fade-in 0.5s var(--ease);
+  }
+  .situation p { margin: 0; color: var(--ink-800); font-size: 15px; }
+  .situation strong { color: var(--ink-900); }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 640px) {
+    .tiles { grid-template-columns: 1fr; }
+  }
+  .tile {
+    display: block;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    padding: 24px 28px;
+    transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), border-color 0.18s var(--ease);
+    animation: fade-in 0.6s var(--ease);
+  }
+  .tile:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--ink-300);
+  }
+  .tile .tile-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink-900);
+    margin-bottom: 6px;
+  }
+  .tile .tile-desc {
+    font-size: 14px;
+    color: var(--ink-500);
+  }
+
+  .how-i-work {
+    background: var(--accent-050);
+    border: 1px solid var(--accent-100);
+    border-radius: var(--radius-xl);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    animation: fade-in 0.7s var(--ease);
+  }
+  .how-i-work .eyebrow { color: var(--accent-600); }
+  .how-i-work .eyebrow::before { background: var(--accent-500); }
+  .how-i-work p { margin: 0; color: var(--ink-800); font-size: 15px; }
+  .how-i-work code {
+    background: var(--surface);
+    border: 1px solid var(--accent-100);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 24px 0 72px;
+    font-size: 13px;
+    color: var(--ink-400);
+    border-top: 1px solid var(--ink-200);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Forward-Deployed PM workspace</div>
+      <h1>Josh's Client Place</h1>
+      <p class="subtitle">Meridian Capital Services — turning a board-level "AI-enabled operations" mandate into something FP&A actually uses.</p>
+    </header>
+
+    <section class="situation">
+      <p><strong>The situation, in one paragraph:</strong> Meridian is a PE-backed investment management firm where FP&A bought Claude enterprise licenses six months ago and adoption since has been near zero — not from resistance, but because the team can't yet see where a chat tool fits work that's "numbers-based and requires judgment." David Okafor, Director of FP&A, is uncertain rather than resistant, and has a kickoff call with two of his analysts tomorrow.</p>
+    </section>
+
+    <div class="tiles">
+      <a class="tile" href="case-file/README.md">
+        <div class="tile-title">Case File</div>
+        <div class="tile-desc">Who they are, what happened, who I'm meeting</div>
+      </a>
+      <a class="tile" href="discovery/README.md">
+        <div class="tile-title">Discovery</div>
+        <div class="tile-desc">How I surface the pain they can't see</div>
+      </a>
+      <a class="tile" href="deliverables/README.md">
+        <div class="tile-title">Deliverables</div>
+        <div class="tile-desc">The actual point of view</div>
+      </a>
+      <a class="tile" href="presentations/README.md">
+        <div class="tile-title">Presentations</div>
+        <div class="tile-desc">The deck and the demo</div>
+      </a>
+    </div>
+
+    <section class="how-i-work">
+      <div class="eyebrow">How I work</div>
+      <p>This repo <em>is</em> my live AI setup — <code>CLAUDE.md</code>, the skills under <code>.claude/skills/</code>, and everything in <code>context/</code> load automatically the moment I open Claude Code here. Nothing on this page is decorative; it's what I actually open every session on this engagement.</p>
+    </section>
+
+    <footer>
+      <span>Meridian Capital Services · Caylent Forward-Deployed PM interview</span>
+      <span>Built with Claude Code</span>
+    </footer>
+  </div>
+
+  <script src="https://app.evo.caylent.com/sdk/evo.js"></script>
+</body>
+</html>

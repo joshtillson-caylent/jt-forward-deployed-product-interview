@@ -1,0 +1,7 @@
+CLAUDE_MARKETPLACES_DIR=${HOME}/.claude-marketplaces
+
+KANON_SOURCE_product_skills_URL=https://github.com/caylent/caylent-private-kanon.git
+KANON_SOURCE_product_skills_REF=main
+KANON_SOURCE_product_skills_PATH=repo-specs/common/product/product-skills/product-skills-marketplace.xml
+KANON_SOURCE_product_skills_NAME=product-skills
+KANON_SOURCE_product_skills_MARKETPLACE=true
