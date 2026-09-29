@@ -58,8 +58,28 @@ function markdownFiles(dir) {
 const docs = Object.fromEntries(
   ["case-file", "discovery", "research", "deliverables"].flatMap(markdownFiles).map((p) => [p, read(p)]),
 );
-const deck = read("presentations/kickoff-deck/index.html");
 const json = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
+
+// ---- Inline raster images as base64 data URIs. Evo serves the app as a single index.html and
+// doesn't proxy nested asset paths, and the deck's srcdoc iframe doesn't reliably resolve relative
+// URLs against the parent page either — so any src="<relative path>.png/.jpg" must become self-contained.
+const MIME = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg" };
+const IMG_SRC_RE = /src="([\w./-]+\.(?:png|jpe?g))"/g;
+function inlineImages(text, baseDir) {
+  return text.replace(IMG_SRC_RE, (match, relPath) => {
+    const abs = join(ROOT, baseDir, relPath);
+    let data;
+    try {
+      data = readFileSync(abs);
+    } catch {
+      throw new Error(`Referenced image not found: ${relPath} (resolved to ${abs})`);
+    }
+    const ext = relPath.split(".").pop().toLowerCase();
+    return `src="data:${MIME[ext]};base64,${data.toString("base64")}"`;
+  });
+}
+const deck = inlineImages(read("presentations/kickoff-deck/index.html"), "presentations/kickoff-deck");
+const bundledWithImages = inlineImages(bundled, ".");
 
 // ---- Assemble ----
 let html = read("index.html");
@@ -72,7 +92,7 @@ replaceOnce(
   '<script type="module" src="site/app.js"></script>',
   [
     `<script>window.__MERIDIAN_DOCS = ${json(docs)};\nwindow.__MERIDIAN_DECK = ${json(deck)};</script>`,
-    `<script>\n(() => {\n"use strict";\n${bundled.replace(/<\/script/gi, "<\\/script")}\n})();\n</script>`,
+    `<script>\n(() => {\n"use strict";\n${bundledWithImages.replace(/<\/script/gi, "<\\/script")}\n})();\n</script>`,
   ].join("\n"),
 );
 
