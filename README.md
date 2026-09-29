@@ -28,7 +28,8 @@ deliverables/         The point of view (the deck's source material)
 presentations/        The compressed artifact
 meeting-notes/         Working folder for session notes (populated on demand)
 status-updates/       Working folder for status updates (populated on demand)
-index.html            The Evo landing page
+site/                 Vanilla HTML/CSS/JS behind index.html (sidebar nav, dashboard)
+index.html            The Evo landing page — opens to Home, not straight to a deck
 ```
 
 ## Where the brief lives

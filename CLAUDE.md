@@ -15,6 +15,7 @@ This repo is a simulated client engagement workspace, not a product codebase. It
 - `.claude/skills/`, `context/`, `prompts/`, `rules/` — the tooling (below).
 - `.ai/tasks/` — task-planning documents for this repo's own build-out (see "Task planning" below).
 - `meeting-notes/`, `status-updates/` — working folders, populated on demand as the engagement progresses.
+- `site/` — the vanilla HTML/CSS/JS behind the root `index.html` landing page/dashboard (sidebar nav, Evo-identity greeting, section pages). No build step, styled to match pxe-hub's layout. See `site/README.md`.
 
 ## Tooling
 
@@ -27,6 +28,7 @@ Skills under `.claude/skills/` are auto-discovered by Claude Code and each is di
 - `task-planning-and-execution/{task-planning, step-execution, step-loop}` — available for any future multi-step initiative in this repo. **Do not use `step-execution`/`step-loop` to drive the repo's own build-out** — that was done as a single direct pass (see "Task planning" below).
 - The already-installed `cce-capabilities:*` plugin skills (stakeholder-map, discovery-question-generator, value-charter-workshop-design, etc.) — use as sharper point-tools for individual artifacts inside the `genai-poc-strategy` lifecycle, not as a replacement for it.
 - `pxe-hub-toolkit:build-presentation-deck` is **not usable in this repo** — it's hard-wired to pxe-hub's own React app and PR flow.
+- `stop-slop` (vendored from [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop), MIT) — strips AI writing tells (filler phrases, formulaic contrasts, passive voice). Run `/stop-slop` over any substantial new prose written for the site (`index.html` / `site/` — headlines, empty-state copy, card descriptions) before publishing it. Not needed for terse UI labels or internal working notes.
 
 ## Task planning
 
