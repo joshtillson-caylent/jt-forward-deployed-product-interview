@@ -33,6 +33,16 @@ Organized by what each question is actually trying to surface. Aim to spend most
 15. What's the one thing that, if we get it right in the first two weeks, tells you this is actually going somewhere?
 16. Who else on the team should we talk to, and is there anyone who'd push back hard on this if we're not careful?
 
+## Added for the kickoff (2026-09-28): calendar, org context, orientation
+
+All `hypothesis — validate`. These were added after the deck was reframed around the close calendar and the org-wide adoption question.
+
+17. When does close actually run: which business days, and which are the worst? When is the Q3 board meeting, and when does narrative prep start? (Nothing gets booked until this is answered.)
+18. Is near-zero adoption an FP&A thing, or is it the same across Meridian? Can we see the Claude Enterprise usage data?
+19. Is any team at Meridian using Claude well today? Could we talk to them?
+20. What did the orientation cover: a general tour, example prompts, or anything FP&A-specific? Did anyone leave it with a toolkit, prompts, or a workflow they could reuse?
+21. What data can go into Claude Enterprise today, and who sets that rule?
+
 ## Explicitly not asking
 
 We're deliberately not opening with "what's your biggest pain point" or "how do you feel about AI" — per `discovery-notes.md`, those questions get "nothing" from a team that's never had a before/after contrast to notice.

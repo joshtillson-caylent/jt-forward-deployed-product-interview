@@ -4,16 +4,21 @@
 
 - **Presenter:** Josh Tillson
 - **Audience:** the interview panel
-- **Status:** draft — skeleton only, content pending (see `outline.md`)
+- **Status:** first pass: 8 slides built from `outline.md`. Press `N` for speaker notes, `F` for fullscreen, and print to PDF for a handout.
 - **Format:** ~15 minutes presented, followed by Q&A, then an 8-minute live AI demo (separate from this deck)
 
-## What it needs to cover (from `case-file/scenario-brief.pdf`)
+## Slides
 
-1. Is "AI isn't relevant to our work" a legitimate read or a misread — and what that changes (`deliverables/ai-relevance-position.md`)
-2. What David Okafor needs from Josh in the first two weeks (`deliverables/david-okafor-first-two-weeks.md`)
-3. The discovery motion — surfacing invisible pain, designing the session (`discovery/discovery-session-design.md`)
-4. The first 30 days, in order, with rationale (`deliverables/first-30-days-plan.md`)
+1. Cover
+2. Where Meridian is today
+3. The actual problem (`deliverables/ai-relevance-position.md`)
+4. What we've seen elsewhere (`deliverables/anthropic-finance-evidence.md`)
+5. What David needs, plus what we ask of him (`deliverables/david-okafor-first-two-weeks.md`)
+6. The discovery motion (`discovery/discovery-session-design.md`)
+7. The first 30 days (`deliverables/first-30-days-plan.md`)
+8. Tier 1 → Tier 2 (`deliverables/anthropic-finance-evidence.md`)
 
-## Next step
+## Open before the panel
 
-Run `/presentation-builder` to turn the four deliverables above into a locked narrative arc in `outline.md`, then write the real slide content into `index.html`.
+- Confirm Anthropic's official Tier 1/Tier 2 wording.
+- Close and board dates on slide 7 are assumptions.

@@ -6,6 +6,7 @@ function svg(inner) {
 }
 
 export const ICONS = {
+  "arrow-left": svg('<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'),
   home: svg('<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h4v-6h3v6h4a1 1 0 0 0 1-1v-9"/>'),
   folder: svg('<path d="M3 7a1 1 0 0 1 1-1h4.5l2 2H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/>'),
   compass: svg('<circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16" y2="16"/>'),

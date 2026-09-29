@@ -2,4 +2,4 @@
 
 | Slug | Title | Status | Audience | Path |
 |------|-------|--------|----------|------|
-| `kickoff-deck` | Meridian Capital Services — Approach & Point of View | draft | Interview panel | `presentations/kickoff-deck/` |
+| `kickoff-deck` | Meridian FP&A Kickoff — Point of View | first pass | Interview panel | `presentations/kickoff-deck/` |

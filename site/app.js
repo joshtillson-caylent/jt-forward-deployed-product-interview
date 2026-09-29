@@ -3,43 +3,51 @@ import { renderSidebar } from "./nav.js";
 import { registerRoute, startRouter } from "./router.js";
 import { renderHome } from "./views/home.js";
 import { renderPlaceholder } from "./views/placeholder.js";
+import { renderLibrary, CASE_FILE_DOCS, DISCOVERY_DOCS } from "./views/library.js";
 import { renderDeliverables } from "./views/deliverables.js";
 import { renderPresentations } from "./views/presentations.js";
+import { renderDoc } from "./views/doc.js";
+import { renderDeck } from "./views/deck.js";
 
-async function boot() {
-  const user = await getUser();
+// Render right away as a guest, then fill in the Evo user when (if) it arrives. Waiting on
+// evo.init() before the first render left a blank page whenever the SDK was slow or blocked.
+function boot() {
+  const sidebar = document.getElementById("sidebar");
+  let user = null;
 
-  renderSidebar(document.getElementById("sidebar"), user);
+  renderSidebar(sidebar, user);
 
   registerRoute("/home", (mount) => renderHome(mount, user));
 
   registerRoute("/case-file", (mount) =>
-    renderPlaceholder(mount, {
+    renderLibrary(mount, {
       eyebrow: "Case File",
       title: "Who they are, what happened",
-      description: "Facts as given — the client context walked in with, not yet enriched by discovery.",
-      note: "The scenario brief, company profile, and stakeholder map will appear here once this section is wired up.",
+      description: "The facts as the brief gave them, before discovery adds to them.",
+      docs: CASE_FILE_DOCS,
     }),
   );
 
   registerRoute("/discovery", (mount) =>
-    renderPlaceholder(mount, {
+    renderLibrary(mount, {
       eyebrow: "Discovery",
-      title: "How the pain gets surfaced",
-      description: "The motion to find more — pain points, discovery questions, and the value charter.",
-      note: "Discovery notes and the session design will appear here once this section is wired up.",
+      title: "Surfacing the pain the team can't see",
+      description: "Pain points, discovery questions, the value charter, and the session design.",
+      docs: DISCOVERY_DOCS,
     }),
   );
 
   registerRoute("/deliverables", renderDeliverables);
   registerRoute("/presentations", renderPresentations);
+  registerRoute("/doc/", renderDoc);
+  registerRoute("/deck", renderDeck);
 
   registerRoute("/meeting-notes", (mount) =>
     renderPlaceholder(mount, {
       eyebrow: "Meeting Notes",
       title: "Call recaps and discovery interviews",
-      description: "Structured notes from every session on this engagement.",
-      note: "Notes will appear here as meetings happen and get summarized.",
+      description: "Structured notes from each session on this engagement.",
+      note: "We'll post notes here after each meeting.",
     }),
   );
 
@@ -47,12 +55,19 @@ async function boot() {
     renderPlaceholder(mount, {
       eyebrow: "Status Updates",
       title: "What shipped, what's next",
-      description: "Weekly progress — what's in flight, what's at risk, what's coming.",
-      note: "The first status update will appear here once the engagement is underway.",
+      description: "Weekly progress: what's in flight, at risk, and coming next.",
+      note: "We'll post the first status update after kickoff.",
     }),
   );
 
-  startRouter(document.getElementById("main-content"));
+  const rerender = startRouter(document.getElementById("main-content"));
+
+  getUser().then((evoUser) => {
+    if (!evoUser) return;
+    user = evoUser;
+    renderSidebar(sidebar, user);
+    rerender();
+  });
 }
 
 boot();

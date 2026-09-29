@@ -24,3 +24,21 @@ Not resistant. Not yet a champion. Uncertain, under-resourced to figure this out
 - Present a menu of AI use cases and ask David to prioritize — he doesn't have the context or bandwidth to do that well yet, and it would just relocate the uncertainty back onto him
 - Lead with tooling, licenses, or capability talk — none of that is what "uncertain, not resistant" is asking for
 - Treat the kickoff call as a listening exercise only — David needs to leave it with something, not just have been heard
+
+## Framing to open with
+
+- **Validation first.** He got a one-hour orientation and no workflow-specific toolkit, on a team with no slack, so stalling out makes sense. Bringing in help is the right call, not an admission of failure.
+- **Proof from peers.** Show real finance examples before any plan, including Anthropic's own finance team, which uses Claude for variance analysis and first-pass commentary (see `anthropic-finance-evidence.md`).
+
+## What we ask of David at kickoff
+
+These are decisions only he can make. Everything else is ours.
+
+1. **Champions.** Are the two analysts on the call the right ones? Is anyone else a better fit?
+2. **Interviews.** Which analysts should we talk to, and is any team at Meridian already using Claude well?
+3. **Discovery session.** Who should be in the room: all 8, or a core group?
+4. **Timing.** When do close and board prep peak? When is a workshop safe to hold?
+5. **Ways of working.** Check-in cadence, channel, and who makes the call.
+6. **Artifacts and access.** Last variance pack, templates, data-handling rules, and Claude Enterprise usage data (the fastest answer to "is this org-wide?").
+
+He leaves kickoff with a one-page 30-day plan with dates, named champions, and the next meetings booked.

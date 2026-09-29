@@ -2,10 +2,10 @@ import { esc } from "../util.js";
 
 const DECKS = [
   {
-    href: "presentations/kickoff-deck/index.html",
-    title: "Meridian Capital Services — Approach & Point of View",
-    desc: "The kickoff deck: the read on where FP&A actually is, and the first-30-days plan.",
-    status: "draft",
+    href: "#/deck",
+    title: "Meridian FP&A Kickoff: Point of View",
+    desc: "Eight slides: where FP&A stands today, what David needs, the discovery motion, and the first 30 days.",
+    status: "first pass",
     audience: "Interview panel",
   },
 ];
@@ -16,8 +16,8 @@ export function renderPresentations(mount) {
       <div class="eyebrow">Presentations</div>
       <h1>The deck <span class="accent-text">and the demo</span></h1>
       <p class="page-desc">
-        The compressed artifact. One deck for this engagement, hand-built as plain HTML —
-        keyboard-navigable and print-to-PDF friendly.
+        One deck for this engagement, hand-built as plain HTML. Arrow keys move between slides,
+        and it prints to PDF.
       </p>
     </section>
 
@@ -26,7 +26,7 @@ export function renderPresentations(mount) {
         (deck) => `
         <a class="card deck-card" href="${esc(deck.href)}">
           <div>
-            <span class="badge-pill${deck.status === "draft" ? " warm" : ""}">${esc(deck.status)}</span>
+            <span class="badge-pill${deck.status !== "final" ? " warm" : ""}">${esc(deck.status)}</span>
           </div>
           <h3>${esc(deck.title)}</h3>
           <p>${esc(deck.desc)}</p>

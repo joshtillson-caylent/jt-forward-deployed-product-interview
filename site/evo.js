@@ -19,11 +19,19 @@ function initSdk() {
   return initPromise;
 }
 
+const IDENTITY_TIMEOUT_MS = 6000;
+
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(`Evo identity timed out after ${ms}ms`)), ms)),
+  ]);
+}
+
 /** Resolves to an Evo user object ({ name, email, department, ... }), or null if unavailable. */
 export async function getUser() {
   try {
-    await initSdk();
-    return (await window.evo.identity.userInfo()) || null;
+    return (await withTimeout(initSdk().then(() => window.evo.identity.userInfo()), IDENTITY_TIMEOUT_MS)) || null;
   } catch (err) {
     console.warn("Evo identity unavailable, falling back to a generic greeting:", err);
     return null;

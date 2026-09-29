@@ -3,7 +3,7 @@ import { esc, timeGreeting, firstName } from "../util.js";
 
 const QUICK_LINKS = [
   { path: "/case-file", icon: "folder", title: "Case File", desc: "Who they are, what happened, who's in the room." },
-  { path: "/discovery", icon: "compass", title: "Discovery", desc: "How the pain gets surfaced, not just asserted." },
+  { path: "/discovery", icon: "compass", title: "Discovery", desc: "How we surface the pain the team can't see." },
   { path: "/deliverables", icon: "file-text", title: "Deliverables", desc: "The point of view behind the deck." },
   { path: "/presentations", icon: "monitor", title: "Presentations", desc: "The kickoff deck and the demo." },
   { path: "/meeting-notes", icon: "calendar", title: "Meeting Notes", desc: "Call recaps and discovery interviews." },
@@ -19,9 +19,9 @@ export function renderHome(mount, user) {
       <div class="eyebrow">${esc(greet)}</div>
       <h1>${esc(name)}, <span class="accent-text">where should we pick up?</span></h1>
       <p class="page-desc">
-        Meridian Capital Services — turning a board-level "AI-enabled operations" mandate into
-        something FP&amp;A actually uses. Everything from the case file to the kickoff deck lives
-        one click away.
+        Meridian Capital Services: turning a board-level "AI-enabled operations" mandate into
+        something FP&amp;A uses every month. The case file, the discovery work, and the kickoff
+        deck are each one click away.
       </p>
     </section>
 
