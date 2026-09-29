@@ -11,6 +11,7 @@ The front-end behind the root `index.html` — a small hash-routed, vanilla HTML
 - `evo.js` — thin wrapper over `window.evo` (the Evo SDK script tag in `index.html`) for reading the signed-in user's identity, which Evo resolves against Active Directory on its end. Falls back to a generic "Guest" state when the SDK isn't present, e.g. opening `index.html` outside an Evo session.
 - `icons.js` — small inline-SVG icon set (lucide-style) so the nav doesn't need an icon library.
 - `util.js` — shared helpers (HTML escaping, initials, time-of-day greeting).
+- `help.js` — the "Workspace guide" modal (opened from the sidebar's guide button, not a route): what the workspace is, where each section lives, and the `.claude/skills/` available in this repo. Update the skill list here when a skill is added or renamed.
 - `views/` — one render function per route. `library.js` lists a section's docs (Case File, Discovery), `deliverables.js` and `presentations.js` list theirs, `doc.js` renders any repo Markdown file in-app (`#/doc/<path>`), and `deck.js` opens the kickoff deck full-screen (`#/deck`). `placeholder.js` covers the empty sections.
 
 ## Adding a page

@@ -1,5 +1,6 @@
 import { ICONS } from "./icons.js";
 import { esc, initials } from "./util.js";
+import { openHelpModal } from "./help.js";
 
 export const NAV_ITEMS = [
   { path: "/home", label: "Home", icon: "home" },
@@ -35,6 +36,11 @@ export function renderSidebar(el, user) {
       ).join("")}
     </nav>
 
+    <button class="guide-trigger" id="guide-trigger" type="button">
+      <span class="nav-icon">${ICONS["help-circle"]}</span>
+      <span>Workspace guide</span>
+    </button>
+
     <div class="user-badge" role="button" tabindex="0" aria-label="Signed in as ${esc(name)}">
       <div class="user-avatar" aria-hidden="true">${esc(initials(user?.name))}</div>
       <div class="user-meta">
@@ -43,4 +49,6 @@ export function renderSidebar(el, user) {
       </div>
     </div>
   `;
+
+  el.querySelector("#guide-trigger").addEventListener("click", openHelpModal);
 }
