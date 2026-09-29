@@ -477,15 +477,13 @@ body.help-open { overflow: hidden; }
 .mascot-avatar {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background: var(--accent-050);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   animation: mascot-bob 2.4s ease-in-out infinite;
 }
-.mascot-avatar svg { width: 30px; height: 30px; }
+.mascot-avatar img { width: 44px; height: 44px; object-fit: contain; }
 .mascot-bubble { font-size: 13.5px; font-weight: 600; color: var(--ink-900); white-space: nowrap; }
 .mascot-dismiss {
   position: absolute;
