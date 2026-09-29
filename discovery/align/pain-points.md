@@ -20,4 +20,4 @@ Evidence ledger: see `case-file/00-engagement-brief.md`. Everything below is eit
 
 ## Routing
 
-These feed `discovery-notes.md` (synthesis) and `value-charter.md` (what they mean for scope), and downstream into `deliverables/ai-relevance-position.md`.
+These feed `discovery-notes.md` (synthesis) and `value-charter.md` (what they mean for scope), and downstream into `research/ai-relevance-position.md`.

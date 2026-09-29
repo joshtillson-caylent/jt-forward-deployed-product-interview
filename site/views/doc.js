@@ -4,6 +4,7 @@ import { ICONS } from "../icons.js";
 const SECTION_LABELS = {
   "case-file": "Case File",
   discovery: "Discovery",
+  research: "Research",
   deliverables: "Deliverables",
 };
 

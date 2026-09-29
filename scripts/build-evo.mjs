@@ -6,7 +6,7 @@
 // everything Evo needs into one file:
 //   - site/styles.css                  -> <style>
 //   - site/app.js and its imports      -> one inline classic <script> (imports/exports stripped)
-//   - case-file/, discovery/, deliverables/ markdown -> window.__MERIDIAN_DOCS
+//   - case-file/, discovery/, research/, deliverables/ markdown -> window.__MERIDIAN_DOCS
 //   - presentations/kickoff-deck/index.html          -> window.__MERIDIAN_DECK (iframe srcdoc)
 //
 // The source stays build-free for local use; this runs only before publishing.
@@ -56,7 +56,7 @@ function markdownFiles(dir) {
   });
 }
 const docs = Object.fromEntries(
-  ["case-file", "discovery", "deliverables"].flatMap(markdownFiles).map((p) => [p, read(p)]),
+  ["case-file", "discovery", "research", "deliverables"].flatMap(markdownFiles).map((p) => [p, read(p)]),
 );
 const deck = read("presentations/kickoff-deck/index.html");
 const json = (value) => JSON.stringify(value).replace(/</g, "\\u003c");

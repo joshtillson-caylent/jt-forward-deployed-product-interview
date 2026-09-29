@@ -4,7 +4,8 @@ import { esc, timeGreeting, firstName } from "../util.js";
 const QUICK_LINKS = [
   { path: "/case-file", icon: "folder", title: "Case File", desc: "Who they are, what happened, who's in the room." },
   { path: "/discovery", icon: "compass", title: "Discovery", desc: "How we surface the pain the team can't see." },
-  { path: "/deliverables", icon: "file-text", title: "Deliverables", desc: "The point of view behind the deck." },
+  { path: "/research", icon: "file-text", title: "Research", desc: "The point of view behind the deck." },
+  { path: "/deliverables", icon: "briefcase", title: "Deliverables", desc: "Final artifacts — empty until the engagement ships one." },
   { path: "/presentations", icon: "monitor", title: "Presentations", desc: "The kickoff deck and the demo." },
   { path: "/meeting-notes", icon: "calendar", title: "Meeting Notes", desc: "Call recaps and discovery interviews." },
   { path: "/status-updates", icon: "list", title: "Status Updates", desc: "What shipped, what's next." },

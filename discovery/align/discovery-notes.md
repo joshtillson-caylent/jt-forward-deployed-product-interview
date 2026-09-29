@@ -1,6 +1,6 @@
 # Discovery Notes — Synthesized Themes
 
-Three themes, each labeled by confidence. These are what `deliverables/ai-relevance-position.md` and `discovery-session-design.md` are built on.
+Three themes, each labeled by confidence. These are what `research/ai-relevance-position.md` and `discovery-session-design.md` are built on.
 
 ## 1. The work is invisible because it's constant (`hypothesis — validate`)
 

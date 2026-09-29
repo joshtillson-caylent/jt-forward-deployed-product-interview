@@ -34,4 +34,4 @@ The PE sponsor made "AI-enabled finance function" a board-level initiative. Davi
 
 ## What this changes about the approach
 
-See `deliverables/ai-relevance-position.md` for the full argument, but in short: "AI isn't relevant to our work" reads as a misread of the *tool* (generic chat prompting doesn't fit judgment-heavy, numbers-based work), not a misread of the *team's* capacity to benefit. That distinction is why the approach has to be workflow-embedded and demonstrated on a real task, not pitched as a capability.
+See `research/ai-relevance-position.md` for the full argument, but in short: "AI isn't relevant to our work" reads as a misread of the *tool* (generic chat prompting doesn't fit judgment-heavy, numbers-based work), not a misread of the *team's* capacity to benefit. That distinction is why the approach has to be workflow-embedded and demonstrated on a real task, not pitched as a capability.

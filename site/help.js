@@ -42,7 +42,8 @@ const SKILL_GROUPS = [
 const NAV_GUIDE = [
   { label: "Case File", folder: "case-file/", desc: "Who Meridian is and what happened, exactly as the brief gives it." },
   { label: "Discovery", folder: "discovery/", desc: "Pain points, discovery questions, the value charter, and the session design." },
-  { label: "Deliverables", folder: "deliverables/", desc: "The full-prose point of view behind the deck." },
+  { label: "Research", folder: "research/", desc: "The full-prose point of view behind the deck." },
+  { label: "Deliverables", folder: "deliverables/", desc: "Final engagement artifacts — empty until one ships." },
   { label: "Presentations", folder: "presentations/", desc: "The kickoff deck itself, compressed for the room." },
   { label: "Meeting Notes", folder: "meeting-notes/", desc: "Call recaps, added after each session." },
   { label: "Status Updates", folder: "status-updates/", desc: "Weekly progress, added after kickoff." },
@@ -108,7 +109,7 @@ export function initHelpModal() {
           <h3>Skills available in this repo</h3>
           <p>
             These run as Claude Code slash commands scoped to this repo. Each one already knows
-            the Meridian context: case file, discovery notes, deliverables. You don't need to
+            the Meridian context: case file, discovery notes, research. You don't need to
             re-explain it.
           </p>
           ${SKILL_GROUPS.map(

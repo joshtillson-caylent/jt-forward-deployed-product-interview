@@ -10,7 +10,8 @@ This repo is a simulated client engagement workspace, not a product codebase. It
 
 - `case-file/` — facts as given (the brief). Don't add speculation here; that goes in `discovery/`.
 - `discovery/` — the motion to find more: pain points, discovery questions, the value charter, and the session design. Everything not cited to `case-file/scenario-brief.pdf` is labeled `hypothesis — validate` until a real conversation confirms it — keep that labeling discipline when adding to these files.
-- `deliverables/` — the point of view: full-prose strategy documents that back the deck. This is where the thinking happens.
+- `research/` — the point of view: full-prose strategy documents and supporting evidence that back the deck. This is where the thinking happens.
+- `deliverables/` — final, major engagement artifacts (a new toolkit, a prompt ROI analysis, etc.), as distinct from the research prep behind them. Intentionally empty until the engagement produces one.
 - `presentations/` — the compressed artifact. One folder per deck (`registry.md` lists them), plain HTML, no build step.
 - `.claude/skills/`, `context/`, `prompts/`, `rules/` — the tooling (below).
 - `.ai/tasks/` — task-planning documents for this repo's own build-out (see "Task planning" below).
@@ -21,7 +22,7 @@ This repo is a simulated client engagement workspace, not a product codebase. It
 
 Skills under `.claude/skills/` are auto-discovered by Claude Code and each is directly invocable as `/<name>` — there's no separate command-file layer. Reach for:
 
-- `genai-poc-strategy` — the engagement lifecycle orchestrator (Align → Assess → Design). **Redirect its output**: it defaults to writing `.ai/engagements/<customer-slug>/...`; for this repo, write Align outputs into `discovery/align/`, Assess/Design outputs into `deliverables/`, and the Phase 0 brief into `case-file/00-engagement-brief.md` instead.
+- `genai-poc-strategy` — the engagement lifecycle orchestrator (Align → Assess → Design). **Redirect its output**: it defaults to writing `.ai/engagements/<customer-slug>/...`; for this repo, write Align outputs into `discovery/align/`, Assess/Design outputs into `research/`, and the Phase 0 brief into `case-file/00-engagement-brief.md` instead. Reserve `deliverables/` for final, major artifacts only — not this lifecycle's working drafts.
 - `discovery` — for any specific problem/solution decision that needs its own go/no-go. It also defaults to `.ai/engagements/...` or `context/discovery/...` — redirect the same way, into `discovery/`.
 - `presentation-builder` — to lock a deck's narrative arc into its `outline.md` before writing slide HTML.
 - `interview-guide`, `stakeholder-digest`, `meeting-prep`, `meeting-summary`, `meeting-followup`, `research-synthesis`, `status-update`, `week-ahead` — used as-is, no redirection needed.

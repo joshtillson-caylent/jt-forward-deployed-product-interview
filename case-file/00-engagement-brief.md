@@ -34,7 +34,7 @@ Phase 0 shape from `.claude/skills/genai-poc-strategy/SKILL.md`, pre-filled so t
 | Kickoff call with David + 2 analysts | Not yet held (scheduled "tomorrow" per the brief) | — |
 | EVO / GCM, Slack, prior engagement memory | Not swept | This is a simulated scenario, not a real account — no real connector evidence exists to pull |
 
-Everything beyond the brief's own text is labeled `hypothesis — validate` in `discovery/` and `deliverables/`, not presented as confirmed.
+Everything beyond the brief's own text is labeled `hypothesis — validate` in `discovery/` and `research/`, not presented as confirmed.
 
 ## Status & next steps
 

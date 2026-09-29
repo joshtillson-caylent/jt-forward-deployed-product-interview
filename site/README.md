@@ -12,7 +12,7 @@ The front-end behind the root `index.html` — a small hash-routed, vanilla HTML
 - `icons.js` — small inline-SVG icon set (lucide-style) so the nav doesn't need an icon library.
 - `util.js` — shared helpers (HTML escaping, initials, time-of-day greeting).
 - `help.js` — the "Workspace guide" modal (opened from the sidebar's guide button, not a route): what the workspace is, where each section lives, and the `.claude/skills/` available in this repo. Update the skill list here when a skill is added or renamed.
-- `views/` — one render function per route. `library.js` lists a section's docs (Case File, Discovery), `deliverables.js` and `presentations.js` list theirs, `doc.js` renders any repo Markdown file in-app (`#/doc/<path>`), and `deck.js` opens the kickoff deck full-screen (`#/deck`). `placeholder.js` covers the empty sections.
+- `views/` — one render function per route. `library.js` lists a section's docs (Case File, Discovery), `research.js` and `presentations.js` list theirs, `doc.js` renders any repo Markdown file in-app (`#/doc/<path>`), and `deck.js` opens the kickoff deck full-screen (`#/deck`). `placeholder.js` covers the empty sections (Deliverables, Meeting Notes, Status Updates).
 
 ## Adding a page
 
@@ -28,7 +28,7 @@ Per the repo's `stop-slop` skill (see root `CLAUDE.md`), run any substantial new
 
 Evo's CSP only allows scripts from `https://app.evo.caylent.com/sdk/` plus inline scripts. If you publish `site/*.js` as separate files, Evo blocks them and the page loads blank. Publish the single-file bundle instead:
 
-1. `node scripts/build-evo.mjs` writes `dist/evo/index.html` (gitignored). It inlines `styles.css` and every module, and embeds the case-file, discovery, and deliverables Markdown plus the kickoff deck.
+1. `node scripts/build-evo.mjs` writes `dist/evo/index.html` (gitignored). It inlines `styles.css` and every module, and embeds the case-file, discovery, and research Markdown plus the kickoff deck.
 2. `caylent_apps_publish` with slug `meridian-engagement-workspace`, listing only `index.html` (`text/html`), then `curl -X PUT` the file to the returned URL.
 3. Get Josh's go-ahead first (root `CLAUDE.md`).
 

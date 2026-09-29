@@ -17,4 +17,5 @@ export const ICONS = {
   "arrow-right": svg('<line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>'),
   x: svg('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),
   "help-circle": svg('<circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.6 2.6 0 0 1 5 .9c0 1.7-2.4 1.9-2.4 3.4"/><line x1="12" y1="16.8" x2="12" y2="16.81"/>'),
+  briefcase: svg('<rect x="3" y="7.5" width="18" height="12" rx="1.5"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><line x1="3" y1="12.5" x2="21" y2="12.5"/>'),
 };

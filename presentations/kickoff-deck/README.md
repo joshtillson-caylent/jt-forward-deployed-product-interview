@@ -11,12 +11,12 @@
 
 1. Cover
 2. Where Meridian is today
-3. The actual problem (`deliverables/ai-relevance-position.md`)
-4. What we've seen elsewhere (`deliverables/anthropic-finance-evidence.md`)
-5. What David needs, plus what we ask of him (`deliverables/david-okafor-first-two-weeks.md`)
+3. The actual problem (`research/ai-relevance-position.md`)
+4. What we've seen elsewhere (`research/anthropic-finance-evidence.md`)
+5. What David needs, plus what we ask of him (`research/david-okafor-first-two-weeks.md`)
 6. The discovery motion (`discovery/discovery-session-design.md`)
-7. The first 30 days (`deliverables/first-30-days-plan.md`)
-8. Tier 1 → Tier 2 (`deliverables/anthropic-finance-evidence.md`)
+7. The first 30 days (`research/first-30-days-plan.md`)
+8. Tier 1 → Tier 2 (`research/anthropic-finance-evidence.md`)
 
 ## Open before the panel
 

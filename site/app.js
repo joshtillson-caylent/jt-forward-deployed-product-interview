@@ -4,7 +4,7 @@ import { registerRoute, startRouter } from "./router.js";
 import { renderHome } from "./views/home.js";
 import { renderPlaceholder } from "./views/placeholder.js";
 import { renderLibrary, CASE_FILE_DOCS, DISCOVERY_DOCS } from "./views/library.js";
-import { renderDeliverables } from "./views/deliverables.js";
+import { renderResearch } from "./views/research.js";
 import { renderPresentations } from "./views/presentations.js";
 import { renderDoc } from "./views/doc.js";
 import { renderDeck } from "./views/deck.js";
@@ -37,7 +37,17 @@ function boot() {
     }),
   );
 
-  registerRoute("/deliverables", renderDeliverables);
+  registerRoute("/research", renderResearch);
+
+  registerRoute("/deliverables", (mount) =>
+    renderPlaceholder(mount, {
+      eyebrow: "Deliverables",
+      title: "Final engagement artifacts",
+      description: "The things actually handed to Meridian — a toolkit, an ROI analysis, a shipped workflow.",
+      note: "Nothing has reached that stage yet. The research and prep behind the deck live under Research.",
+    }),
+  );
+
   registerRoute("/presentations", renderPresentations);
   registerRoute("/doc/", renderDoc);
   registerRoute("/deck", renderDeck);

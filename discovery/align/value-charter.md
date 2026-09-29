@@ -24,7 +24,7 @@ Turn a board-level "AI-enabled operations" mandate — currently stalled at near
 - **Problem first, not tech first** — every recommendation traces to a specific pain in `pain-points.md`, not a capability we want to show off.
 - **Evidence over assumption** — everything not cited to the brief is labeled `hypothesis — validate` until the kickoff call confirms or corrects it.
 - **Judgment stays with the analyst** — the pitch is draft-then-verify, never autonomous numbers or narrative.
-- **David needs to succeed, not just the pilot** — see `deliverables/david-okafor-first-two-weeks.md`.
+- **David needs to succeed, not just the pilot** — see `research/david-okafor-first-two-weeks.md`.
 
 ## Success criteria (draft — confirm with David)
 

@@ -16,7 +16,7 @@ Meridian's PE sponsor made "AI-enabled operations" an explicit part of the value
 
 - Exec sponsor: the PE sponsor that drove the "AI-enabled operations" mandate — board-level visibility, success definition still open
 - Cross-functional partners: none identified yet outside FP&A — this is a single-team engagement for now
-- Reporting cadence: informal to David week-to-week; a checkpoint readout to the PE sponsor expected around the 30-day mark (see `deliverables/first-30-days-plan.md`)
+- Reporting cadence: informal to David week-to-week; a checkpoint readout to the PE sponsor expected around the 30-day mark (see `research/first-30-days-plan.md`)
 
 ## Ways of working
 
