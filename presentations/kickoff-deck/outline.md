@@ -1,6 +1,6 @@
 # Kickoff Deck — Outline
 
-**Status:** narrative locked via `/presentation-builder` (first pass, 2026-09-28). Slide HTML in `index.html` follows this outline 1:1. Revised after planning: a current-state slide was added, the David slide merged with the asks, and Tier 2 is the close.
+**Status:** narrative locked via `/presentation-builder` (first pass, 2026-09-28). Slide HTML in `index.html` follows this outline 1:1. Revised after planning: a current-state slide was added, the David slide merged with the asks, and Tier 2 is the close. Revised again after a detailed slide-by-slide pass (2026-09-29): fixed the "today" vs. "tomorrow" inconsistency on slide 2 (kickoff is today), replaced vague "no slack" labels with specific language, retitled slide 3 so it no longer implies the analysts personally judged Claude via a demo, spelled out the NBIM/AIG acronyms on slide 4, added "define AI-enabled finance" to David's asks on slide 5, dropped hard-coded October dates and fixed the day-30 chip's vertical alignment on slide 7, and rebuilt slide 8 as a plain-language two-panel Tier 1/Tier 2 comparison.
 
 ## Context
 
@@ -28,20 +28,20 @@
 
 ### 2. Current state: "Where Meridian is today" (added at Josh's request)
 - **Message:** ground the room before the point of view.
-- **Content:** a timeline running PE acquisition (11 months ago) → Claude Enterprise plus a 1-hour orientation (6 months ago) → near-zero FP&A adoption (today) → kickoff (tomorrow). The FP&A cadence shown as chips. Three stakeholder rows: PE sponsor, David, analysts.
-- **Band:** don't know yet: FP&A-only or org-wide? What did the orientation give them?
+- **Content:** a timeline running PE acquisition (11 months ago) → Claude Enterprise plus a 1-hour orientation (6 months ago) → near-zero FP&A adoption (ever since) → kickoff (today — this is the room we're in). Company size ($195M, 380 employees) is folded into the opening lede, not pinned to any one timeline node. The FP&A cadence shown as chips, headed "8 analysts, back-to-back deliverables" (not "no slack"). Three stakeholder rows: PE sponsor, David, analysts.
+- **Band:** don't know yet: FP&A-only or org-wide? What did the orientation give them? What does the PE sponsor mean by "AI-enabled finance"?
 
-### 3. The actual problem: "The team judged Claude on a generic demo"
-- **Legitimate:** no slack; one generic hour; mixed early results were a fair reason to stop; judgment matters.
-- **Misread:** finance teams use Claude on this exact work; much of the time goes to assembly; they haven't tried it on their own work.
+### 3. The actual problem: "The team's read on Claude started with one generic hour"
+- **Legitimate:** no time to adopt (back-to-back cycles, no room to experiment); one generic hour, org-wide; David's early results were mixed (not attributed to the analysts); a human stays in the loop on every output.
+- **The jump** (renamed from "Misread"): peer finance teams already do this work with Claude, with measurable ROI; much of the time goes to assembly, which is what AI already handles; untested beyond David's own attempts — what the analysts have tried is still unknown.
 - **Band:** discovery starts from their real tasks, and an analyst reviews every draft.
 
 ### 4. Evidence: "Finance teams already use Claude for the first pass"
-- **Content:** Meridian's five workflows each mapped to a first pass (hypothesis). Three stat tiles: Anthropic finance team 10–20 hrs/week, NBIM ~20%, AIG >5x. Pattern bar: Claude drafts → analyst verifies → David signs off.
+- **Content:** Meridian's five workflows each mapped to a first pass (hypothesis, flagged as such in a caption). Three stat tiles: Anthropic finance team 10–20 hrs/week, NBIM (spelled out: Norway's sovereign wealth fund) ~20%, AIG (spelled out: global insurer) >5x. Pattern bar: Claude drafts → analyst verifies → David signs off.
 
 ### 5. Team lead: "What David needs in the first two weeks" (merged with the asks)
 - **What we give David:** validation, proof from peers, we carry the legwork, one quick high-ROI win, board-ready language.
-- **What we ask of David at kickoff:** champions, interviews (including teams already using Claude well), who's in the discovery session, timing around close and board, ways of working, artifacts and access (including Claude Enterprise usage data).
+- **What we ask of David at kickoff:** champions, defining "AI-enabled finance" (and who else — leadership, the PE team — needs to weigh in on ROI), interviews (including teams already using Claude well), who's in the discovery session, timing around close and board, ways of working and access combined into one row (cadence/channel/decision-maker plus artifacts and Claude Enterprise usage data) so the added "define AI-enabled finance" ask didn't push the panel past the slide's height.
 - **Band:** David leaves with a one-page 30-day plan, named champions, and the next meetings booked. No use-case menu.
 
 ### 6. Discovery: "Discovery starts with a task they did last week"
@@ -50,16 +50,15 @@
 - **Band:** goal for the session: each analyst sees a draft of their own recent work and decides what's wrong with it.
 
 ### 7. First 30 days: "Planned around their close calendar"
-- **Timeline:** Day 0 Kick off (Sep 29) · Wk 1 Listen (Oct 1–9, Q3 close) · Wk 2 Discover (Oct 12–16) · Wk 3 Build (Oct 19–23) · Wk 4 Adopt (Oct 26–30).
+- **Timeline:** Day 0 Kick off · Wk 1 Listen (during Q3 close) · Wk 2 Discover (after close wraps) · Wk 3 Build (the following week) · Wk 4 Adopt (final week). No hard calendar dates on the slide — kickoff being "today" stands, but the specific October dates were cut so the plan doesn't look locked before David confirms his calendar.
 - **Team-time line per card:** 60 min · 30 min per person · 90-min workshop · 2 × 20-min demos · 30-min readout.
-- **Bottom:** build → demo → feedback → iterate. Day-30 measures: draft keep-rate, hours saved per cycle, unprompted use.
-- **Note:** close and board dates are `hypothesis — validate`.
+- **Bottom:** build → demo → feedback → iterate. Day-30 measures: draft keep-rate, hours saved per cycle, unprompted use. (Fixed: the Day-30 chip wasn't vertically centered against the other pills in that row — `.measures` was missing `align-items: center`.)
+- **Note:** close and board dates are `hypothesis — validate`; footnote now says "we'll confirm them with David today," matching kickoff being today.
 
 ### 8. Beyond activation: "Tier 1 → Tier 2: from prompts to agentic workflows" (closing slide)
 - **Tier framing:** Tier 1 and Tier 2 are two of the three engagement types Caylent runs as an Anthropic partner. This engagement is Tier 1 (Claude Activation). Tier 2 is agentic workflows and automation. Tier 3 stays off the slide.
-- **Ladder:** Activate (Projects, Skills, Claude for Excel) → Connect (MCP connectors) → Automate (agentic workflows, Claude Agent SDK).
-- **Cards:** Anthropic's Month-end closer agent plus Campfire (close 3 days faster, reconciliation −90%); Evo as Caylent's own version of the pattern.
-- **Band:** for the sponsor, "AI-enabled finance" becomes a sequence: owned → connected → automated.
+- **Layout (simplified):** a plain-language two-panel comparison (reusing the give/ask panel style from slide 5) instead of the three-rung ladder plus a two-card grid — that combination read as dense without clarifying where the engagement goes next. Left panel: Tier 1, "Equip the team" — skills, a shared Project, ways of working, analysts still doing the pasting and reviewing themselves. Right panel: Tier 2, "Automate the workflow" — Claude connected and scheduled, drafting on its own, analyst still reviews before it ships; Anthropic's Month-end closer agent and Campfire folded in as a single proof line (close 3 days faster, reconciliation −90%).
+- **Band:** for the sponsor, "AI-enabled finance" becomes a sequence: the team owns a workflow, then we automate it.
 
 ## Visuals
 

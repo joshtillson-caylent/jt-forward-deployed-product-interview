@@ -3,12 +3,12 @@ import { esc, initials } from "./util.js";
 import { openHelpModal } from "./help.js";
 
 export const NAV_ITEMS = [
+  { path: "/presentations", label: "Presentations", icon: "monitor", highlight: true, badge: "Today" },
   { path: "/home", label: "Home", icon: "home" },
   { path: "/case-file", label: "Case File", icon: "folder" },
   { path: "/discovery", label: "Discovery", icon: "compass" },
   { path: "/research", label: "Research", icon: "file-text" },
   { path: "/deliverables", label: "Deliverables", icon: "briefcase" },
-  { path: "/presentations", label: "Presentations", icon: "monitor" },
   { path: "/meeting-notes", label: "Meeting Notes", icon: "calendar" },
   { path: "/status-updates", label: "Status Updates", icon: "list" },
 ];
@@ -29,9 +29,10 @@ export function renderSidebar(el, user) {
     <nav class="nav" aria-label="Primary">
       ${NAV_ITEMS.map(
         (item) => `
-        <a class="nav-link" href="#${item.path}">
+        <a class="nav-link${item.highlight ? " nav-link--highlight" : ""}" href="#${item.path}">
           <span class="nav-icon">${ICONS[item.icon]}</span>
           <span>${esc(item.label)}</span>
+          ${item.badge ? `<span class="nav-badge">${esc(item.badge)}</span>` : ""}
         </a>
       `,
       ).join("")}

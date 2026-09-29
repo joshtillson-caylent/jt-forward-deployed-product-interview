@@ -8,6 +8,7 @@ import { renderResearch } from "./views/research.js";
 import { renderPresentations } from "./views/presentations.js";
 import { renderDoc } from "./views/doc.js";
 import { renderDeck } from "./views/deck.js";
+import { mountMascotWidget } from "./widget.js";
 
 // Render right away as a guest, then fill in the Evo user when (if) it arrives. Waiting on
 // evo.init() before the first render left a blank page whenever the SDK was slow or blocked.
@@ -71,6 +72,7 @@ function boot() {
   );
 
   const rerender = startRouter(document.getElementById("main-content"));
+  mountMascotWidget();
 
   getUser().then((evoUser) => {
     if (!evoUser) return;

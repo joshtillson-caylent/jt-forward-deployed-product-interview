@@ -264,7 +264,7 @@
   .give-ask { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .panel { border: 1px solid var(--ink-200); border-radius: 14px; padding: 18px 20px; }
   .panel.green { background: var(--accent-050); border-color: rgba(34, 197, 94, 0.3); }
-  .rows { display: flex; flex-direction: column; gap: 11px; }
+  .rows { display: flex; flex-direction: column; gap: 9px; }
   .row { display: flex; gap: 12px; align-items: flex-start; }
   .row svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; color: var(--ink-500); }
   .panel.green .row svg { color: var(--accent-600); }
@@ -299,21 +299,9 @@
   .loop { display: flex; align-items: center; gap: 8px; }
   .loop .chip { background: var(--surface); }
   .loop .flow-arrow svg { width: 14px; height: 14px; }
-  .measures { display: flex; gap: 8px; flex-wrap: wrap; }
+  .measures { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .foot-note { font-size: 11.5px; color: var(--ink-400); }
 
-  .ladder { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-items: end; }
-  .rung { border-radius: 14px; border: 1px solid var(--ink-200); padding: 16px 18px; background: var(--ink-050); }
-  .rung.r1 { min-height: 170px; border-color: rgba(34, 197, 94, 0.45); background: var(--accent-050); }
-  .rung.r2 { min-height: 200px; }
-  .rung.r3 { min-height: 230px; }
-  .rung-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .rung-head svg { width: 20px; height: 20px; color: var(--ink-500); }
-  .rung.r1 .rung-head svg { color: var(--accent-600); }
-  .rung-name { font-size: 18px; font-weight: 700; }
-  .rung p { font-size: 14.5px; color: var(--ink-600); line-height: 1.45; }
-  .rung .terms { font-size: 12px; color: var(--ink-500); margin-top: 10px; }
-  .tier-labels { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; margin-bottom: 8px; }
   .tier-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 8px; text-align: center; }
   .tier-label.t1 { background: var(--accent-100); color: var(--accent-600); }
   .tier-label.t2 { background: var(--ink-100); color: var(--ink-600); }
@@ -375,7 +363,7 @@
         <section class="slide" data-label="Where Meridian is today">
           <div class="eyebrow">Where we're starting</div>
           <h2>Where Meridian is today</h2>
-          <p class="lede">A board-level mandate and licenses already paid for, but a finance team with no time to work out where Claude fits.</p>
+          <p class="lede">A $195M, 380-person business with a board-level mandate and licenses already paid for, but a finance team with no time to work out where Claude fits.</p>
 
           <div class="timeline" style="margin-top: 26px;">
             <div class="tl-node">
@@ -389,20 +377,20 @@
               <div class="tl-sub">Finance attends a mandatory 1-hour orientation</div>
             </div>
             <div class="tl-node warn">
-              <div class="tl-when">Today</div>
+              <div class="tl-when">Ever since</div>
               <div class="tl-what">FP&amp;A adoption near zero</div>
               <div class="tl-sub">"I just don't see how it applies to what we do."</div>
             </div>
             <div class="tl-node hl">
-              <div class="tl-when">Tomorrow</div>
+              <div class="tl-when">Today</div>
               <div class="tl-what">Kickoff with David + 2 analysts</div>
-              <div class="tl-sub">$195M revenue · 380 employees</div>
+              <div class="tl-sub">The conversation we're having right now</div>
             </div>
           </div>
 
           <div class="grid-2 fill" style="margin-top: 28px;">
             <div>
-              <h3 class="col-title">FP&amp;A: 8 analysts, no slack</h3>
+              <h3 class="col-title">FP&amp;A: 8 analysts, back-to-back deliverables</h3>
               <div class="chips">
                 <span class="chip" data-icon="calendar">Monthly close</span>
                 <span class="chip" data-icon="scale">Budget vs. actuals</span>
@@ -426,7 +414,7 @@
           </div>
 
           <div class="band ink" data-icon="help">
-            <span><b>Don't know yet:</b> Is low adoption an FP&amp;A problem or an org-wide one? What did the orientation give them?</span>
+            <span><b>Don't know yet:</b> Is low adoption an FP&amp;A problem or an org-wide one? What did the orientation give them? And what does the PE sponsor mean by "AI-enabled finance"?</span>
           </div>
           <aside class="notes">
             <p>Keep this quick, about a minute. The panel knows the brief; the point is to ground the room before giving a point of view.</p>
@@ -437,25 +425,25 @@
         <!-- 3 · The actual problem -->
         <section class="slide" data-label="The actual problem">
           <div class="eyebrow">01 · The actual problem</div>
-          <h2>The team judged Claude on a generic demo</h2>
+          <h2>The team's read on Claude started with one generic hour</h2>
           <p class="lede">Their answer whenever AI comes up: "Our work is numbers-based and requires judgment." Some of that holds up.</p>
 
           <div class="grid-2 fill" style="margin-top: 34px;">
             <div>
               <h3 class="col-title" style="margin-bottom: 18px;"><span class="tag tag-warm">Legitimate</span></h3>
               <ul class="bullets lg">
-                <li class="bullet warm" data-icon="clock"><span><b>No slack.</b> Close, BvA, reporting, and board prep run back to back.</span></li>
-                <li class="bullet warm" data-icon="book"><span><b>One generic hour.</b> A tour of the tool, with nothing on their workflows.</span></li>
-                <li class="bullet warm" data-icon="alert"><span><b>Mixed early results.</b> With no time to spare, that's a fair reason to stop.</span></li>
-                <li class="bullet warm" data-icon="shield"><span><b>Judgment matters.</b> A person reviews anything that reaches the board.</span></li>
+                <li class="bullet warm" data-icon="clock"><span><b>No time to adopt.</b> Close, BvA, reporting, and board prep run back to back, with no window to learn something new.</span></li>
+                <li class="bullet warm" data-icon="book"><span><b>One generic hour, org-wide.</b> A tour of the tool, with nothing on FP&amp;A's workflows.</span></li>
+                <li class="bullet warm" data-icon="alert"><span><b>David's early results were mixed.</b> With no time to spare, that's a fair reason to stop.</span></li>
+                <li class="bullet warm" data-icon="shield"><span><b>A human stays in the loop.</b> No analysis or report goes out without an analyst reviewing it first.</span></li>
               </ul>
             </div>
             <div>
-              <h3 class="col-title" style="margin-bottom: 18px;"><span class="tag tag-green">Misread</span></h3>
+              <h3 class="col-title" style="margin-bottom: 18px;"><span class="tag tag-green">The jump</span></h3>
               <ul class="bullets lg">
-                <li class="bullet good" data-icon="bar-chart"><span><b>Finance teams use Claude on this exact work.</b> Variance analysis and commentary are among the most common uses.</span></li>
-                <li class="bullet good" data-icon="layers"><span><b>Much of the time goes to assembly.</b> Pulling numbers, reconciling, and drafting happen before any judgment call.</span></li>
-                <li class="bullet good" data-icon="eye"><span><b>They haven't tried it on their own work.</b> The orientation covered the tool in general terms.</span></li>
+                <li class="bullet good" data-icon="bar-chart"><span><b>Peer finance teams already do this work with Claude.</b> Variance analysis and commentary are among the most common uses — with measurable ROI (see next).</span></li>
+                <li class="bullet good" data-icon="layers"><span><b>Much of the time goes to assembly.</b> Pulling numbers, reconciling, and drafting happen before any judgment call — and that's the part AI already handles well.</span></li>
+                <li class="bullet good" data-icon="eye"><span><b>Untested beyond David's own attempts.</b> What the analysts have tried, if anything, is still unknown.</span></li>
               </ul>
             </div>
           </div>
@@ -484,12 +472,13 @@
               <div class="map-row"><span class="map-from">Variance analysis</span><span class="flow-arrow" data-icon="arrow-right"></span><span class="map-to">First-draft commentary on the drivers</span></div>
               <div class="map-row"><span class="map-from">Management reporting</span><span class="flow-arrow" data-icon="arrow-right"></span><span class="map-to">Report assembled from the template</span></div>
               <div class="map-row"><span class="map-from">Board narrative</span><span class="flow-arrow" data-icon="arrow-right"></span><span class="map-to">Draft from last quarter + new actuals</span></div>
+              <p style="font-size: 12px; color: var(--ink-400); margin-top: 10px; line-height: 1.4;">Hypothesis — Meridian's own systems, review points, and data rules may shift where the first pass lands. Discovery confirms it.</p>
             </div>
             <div>
               <div class="stats">
                 <div class="stat"><div class="stat-num">10–20 hrs</div><div><div class="stat-who">Anthropic's own finance team, per week</div><div class="stat-what">Variance vs. forecast, board-deck consistency. "I edit from there."</div></div></div>
-                <div class="stat"><div class="stat-num">~20%</div><div><div class="stat-who">NBIM productivity gain</div><div class="stat-what">Norway's wealth fund, with a 50-person AI Ambassador network</div></div></div>
-                <div class="stat"><div class="stat-num">&gt;5x</div><div><div class="stat-who">AIG underwriting review</div><div class="stat-what">Faster review; data accuracy from 75% to over 90%</div></div></div>
+                <div class="stat"><div class="stat-num">~20%</div><div><div class="stat-who">NBIM — Norway's sovereign wealth fund</div><div class="stat-what">Productivity gain, backed by a 50-person AI Ambassador network</div></div></div>
+                <div class="stat"><div class="stat-num">&gt;5x</div><div><div class="stat-who">AIG — global insurer</div><div class="stat-what">Faster underwriting review; data accuracy from 75% to over 90%</div></div></div>
               </div>
               <div class="src">Sources: claude.com/blog, claude.com/customers/nbim, anthropic.com/news/claude-for-financial-services</div>
             </div>
@@ -530,11 +519,11 @@
               <h3 class="col-title">What we ask of David at kickoff</h3>
               <div class="rows">
                 <div class="row" data-icon="user-check"><div><div class="row-t">Champions</div><div class="row-d">Are today's two analysts the right ones? Who else should be?</div></div></div>
+                <div class="row" data-icon="help"><div><div class="row-t">Define "AI-enabled finance"</div><div class="row-d">What does the PE sponsor mean by it? Loop in leadership or the PE team on measurable ROI.</div></div></div>
                 <div class="row" data-icon="mic"><div><div class="row-t">Interviews</div><div class="row-d">Which analysts, plus any team already using Claude well?</div></div></div>
                 <div class="row" data-icon="users-round"><div><div class="row-t">Discovery session</div><div class="row-d">Who should be in the room?</div></div></div>
                 <div class="row" data-icon="calendar"><div><div class="row-t">Timing</div><div class="row-d">When do close and board prep peak? When is a workshop safe?</div></div></div>
-                <div class="row" data-icon="refresh"><div><div class="row-t">Ways of working</div><div class="row-d">Check-in cadence, channel, and who makes the call.</div></div></div>
-                <div class="row" data-icon="key"><div><div class="row-t">Artifacts and access</div><div class="row-d">Last variance pack, templates, data rules, Claude usage data.</div></div></div>
+                <div class="row" data-icon="key"><div><div class="row-t">Ways of working &amp; access</div><div class="row-d">Cadence, channel, and who decides — plus the last variance pack, templates, and Claude usage data.</div></div></div>
               </div>
             </div>
           </div>
@@ -545,6 +534,7 @@
           <aside class="notes">
             <p>Validation first: after a one-hour orientation and no workflow-specific toolkit, the stall makes sense, and bringing us in is the right call.</p>
             <p>We won't hand David a menu of use cases to prioritize. Sorting through options is the work he hired us to do.</p>
+            <p>"AI-enabled finance" is still undefined for the PE sponsor. That's a scope question for David, and possibly leadership, not something discovery can answer on its own.</p>
             <p>The asks are all decisions only David can make. Everything else, like drafting interview guides, synthesizing, and building the first workflow, is ours.</p>
             <p>Timing is the most important ask. Someone who works in this space told me the time of month decides how much time these teams can give. We clear the busy windows with David before we book anything.</p>
             <p>With Claude Enterprise usage data, we can answer the org-wide question in a day: who's using it, and for what.</p>
@@ -614,27 +604,27 @@
             </div>
             <div class="weeks">
               <div class="wk day0">
-                <div class="wk-when">Day 0</div><div class="wk-name">Kick off</div><div class="wk-dates">Tue, Sep 29</div>
+                <div class="wk-when">Day 0</div><div class="wk-name">Kick off</div>
                 <ul><li>Confirm the close and board calendar</li><li>Name champions</li><li>Book interviews and the workshop</li></ul>
                 <div class="wk-ask">Team time: <b>60 min · David + 2</b></div>
               </div>
               <div class="wk">
-                <div class="wk-when">Week 1</div><div class="wk-name">Listen</div><div class="wk-dates">Oct 1–9</div>
+                <div class="wk-when">Week 1</div><div class="wk-name">Listen</div><div class="wk-dates">During Q3 close</div>
                 <ul><li>30-min 1:1s, scheduled around close</li><li>Shadow one close task</li><li>Collect templates and last packs</li><li>Talk to teams already using Claude</li></ul>
                 <div class="wk-ask">Team time: <b>30 min per person</b></div>
               </div>
               <div class="wk">
-                <div class="wk-when">Week 2</div><div class="wk-name">Discover</div><div class="wk-dates">Oct 12–16</div>
+                <div class="wk-when">Week 2</div><div class="wk-name">Discover</div><div class="wk-dates">After close wraps</div>
                 <ul><li>Discovery workshop, after close</li><li>Live first pass on Q3 numbers</li><li>Pick one workflow, with David</li></ul>
                 <div class="wk-ask">Team time: <b>90-min workshop</b></div>
               </div>
               <div class="wk">
-                <div class="wk-when">Week 3</div><div class="wk-name">Build</div><div class="wk-dates">Oct 19–23</div>
+                <div class="wk-when">Week 3</div><div class="wk-name">Build</div><div class="wk-dates">The following week</div>
                 <ul><li>Project, Skill, and prompt kit</li><li>Demo to champions twice</li><li>Iterate on their feedback</li></ul>
                 <div class="wk-ask">Team time: <b>2 × 20-min demos</b></div>
               </div>
               <div class="wk">
-                <div class="wk-when">Week 4</div><div class="wk-name">Adopt</div><div class="wk-dates">Oct 26–30</div>
+                <div class="wk-when">Week 4</div><div class="wk-name">Adopt</div><div class="wk-dates">Final week</div>
                 <ul><li>Champions run it on real work</li><li>Measure keep-rate and hours</li><li>Readout and next-workflow backlog</li></ul>
                 <div class="wk-ask">Team time: <b>30-min readout</b></div>
               </div>
@@ -655,7 +645,7 @@
               <span class="chip">Unprompted use</span>
             </div>
           </div>
-          <div class="foot-note" style="margin-top: 10px;">Close window and board date are assumptions until David confirms them at kickoff. Champions own the workflow by day 30.</div>
+          <div class="foot-note" style="margin-top: 10px;">Close window and board date are assumptions — we'll confirm them with David today. Champions own the workflow by day 30.</div>
           <aside class="notes">
             <p>The order: the workshop and the build both depend on evidence from a real task, so listening comes first. We hold the workshop until close is done so it doesn't compete with the team's hardest week.</p>
             <p>Week 1 asks for about 30 minutes per person. We watch the work without interrupting it, and we find any team at Meridian already using Claude well. They're internal proof, and possibly champions.</p>
@@ -670,48 +660,26 @@
           <h2>Tier 1 → Tier 2: from prompts to agentic workflows</h2>
           <p class="lede">Activation proves one workflow and hands it to the team. Then we can automate that workflow up to the review step.</p>
 
-          <div style="margin-top: 22px;">
-            <div class="tier-labels">
-              <span class="tier-label t1">Tier 1 · Claude Activation · this engagement</span>
-              <span class="tier-label t2">Tier 2 · Agentic workflows &amp; automation</span>
+          <div class="give-ask fill" style="margin-top: 22px;">
+            <div class="panel green">
+              <span class="tier-label t1" style="display: inline-block; margin-bottom: 12px;">Tier 1 · Claude Activation · this engagement</span>
+              <h3 class="col-title">Equip the team</h3>
+              <p style="font-size: 15px; color: var(--ink-700); line-height: 1.5;">Skills, a shared Project, and ways of working inside Claude — so the team can share what works and use it well themselves: paste a prompt or run a Skill, review the draft, make the call.</p>
             </div>
-            <div class="ladder">
-              <div class="rung r1">
-                <div class="rung-head" data-icon="zap"><span class="rung-name">Activate</span></div>
-                <p>The analyst runs each pass with a shared Project, Skills, and a prompt kit.</p>
-                <div class="terms">Projects · Skills · Claude for Excel</div>
-              </div>
-              <div class="rung r2">
-                <div class="rung-head" data-icon="plug"><span class="rung-name">Connect</span></div>
-                <p>Claude pulls the data itself from the ERP, planning tools, and warehouse. Analysts stop copy-pasting.</p>
-                <div class="terms">Connectors (MCP)</div>
-              </div>
-              <div class="rung r3">
-                <div class="rung-head" data-icon="cpu"><span class="rung-name">Automate</span></div>
-                <p>Claude drafts the variance commentary as soon as actuals land. The analyst reviews it and makes the call.</p>
-                <div class="terms">Agentic workflows · Claude Agent SDK</div>
-              </div>
+            <div class="panel">
+              <span class="tier-label t2" style="display: inline-block; margin-bottom: 12px;">Tier 2 · Agentic workflows &amp; automation · next</span>
+              <h3 class="col-title">Automate the workflow</h3>
+              <p style="font-size: 15px; color: var(--ink-700); line-height: 1.5;">Once a workflow is proven and owned, we connect Claude to the data and put it on a schedule — the draft is ready before anyone asks, and the analyst still reviews it before it ships.</p>
+              <p style="font-size: 12.5px; color: var(--ink-500); margin-top: 10px; line-height: 1.4;">Anthropic's own Month-end closer agent, and Campfire (an accounting platform built on Claude), already run this pattern — closing 3 days faster with 90% less reconciliation time.</p>
             </div>
           </div>
-
-          <div class="grid-2" style="margin-top: 16px; gap: 16px;">
-            <div class="card">
-              <h3>What Tier 2 looks like</h3>
-              <p>Anthropic's <b>Month-end closer</b> agent runs the close checklist, prepares journal entries, and produces close reports for review. Campfire, an accounting platform built on Claude, cut close by 3 days and reconciliation time by 90%.</p>
-            </div>
-            <div class="card">
-              <h3>We run this pattern ourselves</h3>
-              <p>Caylent's Evo connects Claude to our own Salesforce, Slack, Jira, and docs. We'd apply the same setup to Meridian's close.</p>
-            </div>
-          </div>
-          <div class="fill"></div>
           <div class="band" data-icon="arrow-right-circle">
-            <span><b>For the sponsor,</b> we define "AI-enabled finance" as a sequence: one workflow the team owns, then connected, then automated.</span>
+            <span><b>For the sponsor,</b> "AI-enabled finance" becomes a sequence: the team owns a workflow, then we automate it.</span>
           </div>
           <aside class="notes">
             <p>End on the next step. Tier 2 makes sense once the team has proven a workflow and owns it. If you automate a workflow the team doesn't trust, you move the problem downstream.</p>
             <p>Anthropic's own guidance on agents: "find the simplest solution possible." Workflows with predefined steps come before open-ended agents. For Meridian, that means a scheduled variance pipeline before anything autonomous.</p>
-            <p>It also gives the PE sponsor a definition of "AI-enabled finance": one owned workflow, then a connected one, then an automated one.</p>
+            <p>It also gives the PE sponsor a definition of "AI-enabled finance": a workflow the team owns, then one we automate.</p>
           </aside>
         </section>
 

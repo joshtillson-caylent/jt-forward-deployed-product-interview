@@ -104,6 +104,30 @@ button { font: inherit; cursor: pointer; }
 .nav-link.active .nav-icon { color: var(--accent-500); }
 .nav-icon svg { width: 100%; height: 100%; }
 
+.nav-link--highlight {
+  background: var(--accent-050);
+  color: var(--accent-600);
+  font-weight: 700;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  margin-bottom: 6px;
+}
+.nav-link--highlight .nav-icon { color: var(--accent-600); }
+.nav-link--highlight:hover { background: var(--accent-100); color: var(--accent-600); }
+.nav-link--highlight.active { background: var(--ink-900); color: #fff; border-color: var(--ink-900); }
+.nav-link--highlight.active .nav-icon { color: var(--accent-500); }
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--accent-500);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
 .guide-trigger {
   margin-top: auto;
   display: flex;
@@ -428,4 +452,67 @@ body.help-open { overflow: hidden; }
   .help-body { max-height: none; }
   .help-grid { grid-template-columns: 1fr; }
   .help-skill { flex-direction: column; gap: 2px; }
+}
+
+/* ---------- Mascot widget (nudge toward the deck) ---------- */
+.mascot-widget {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  animation: mascot-in 0.3s var(--ease);
+}
+.mascot-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--ink-200);
+  border-radius: 999px;
+  padding: 8px 18px 8px 8px;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.mascot-link:hover { transform: translateY(-3px); border-color: var(--accent-500); }
+.mascot-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-050);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: mascot-bob 2.4s ease-in-out infinite;
+}
+.mascot-avatar svg { width: 30px; height: 30px; }
+.mascot-bubble { font-size: 13.5px; font-weight: 600; color: var(--ink-900); white-space: nowrap; }
+.mascot-dismiss {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink-700);
+  color: #fff;
+  border: 2px solid var(--paper);
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mascot-dismiss:hover { background: var(--ink-900); }
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes mascot-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+  .mascot-bubble { display: none; }
+  .mascot-link { padding: 8px; }
 }
