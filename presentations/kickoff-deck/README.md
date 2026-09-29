@@ -1,6 +1,6 @@
 # Kickoff Deck
 
-**What this is:** the 9-slide deck for the interview — a structured point of view on the Meridian Capital Services engagement, not a summary of the brief.
+**What this is:** the 9-slide deck for the interview: a structured point of view on the Meridian Capital Services engagement, not a summary of the brief.
 
 - **Presenter:** Josh Tillson
 - **Audience:** the interview panel

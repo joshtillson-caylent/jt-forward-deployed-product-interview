@@ -306,6 +306,22 @@
   .tier-label.t1 { background: var(--accent-100); color: var(--accent-600); }
   .tier-label.t2 { background: var(--ink-100); color: var(--ink-600); }
 
+  /* ---------- Problem slide: blockers above, Caylent's answer below ---------- */
+  .blockers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .blocker { border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px; padding: 20px 22px; background: #fffbeb; }
+  .blocker-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .blocker-n { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--warm-050); color: #92400e; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .blocker h3 { font-size: 20px; font-weight: 700; color: var(--ink-900); line-height: 1.2; }
+  .blocker .bullets { gap: 12px; }
+  .blocker .bullet { font-size: 16px; }
+  .pivot { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px 0; font-size: 16px; font-weight: 600; color: var(--accent-600); }
+  .pivot svg { width: 16px; height: 16px; }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .answer { display: flex; gap: 12px; align-items: flex-start; border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 14px; padding: 18px 22px; background: var(--accent-050); }
+  .answer > svg { width: 20px; height: 20px; color: var(--accent-600); flex-shrink: 0; margin-top: 1px; }
+  .answer-t { font-size: 17px; font-weight: 700; color: var(--accent-600); }
+  .answer-d { font-size: 15px; color: var(--ink-700); line-height: 1.45; margin-top: 4px; }
+
   /* ---------- About-me intro slide ---------- */
   .intro-kicker { font-size: 14px; font-style: italic; color: var(--ink-500); margin-bottom: 10px; }
   .intro-name { font-size: 40px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink-900); line-height: 1.05; }
@@ -478,40 +494,47 @@
           </aside>
         </section>
 
-        <!-- 4 · The actual problem -->
-        <section class="slide" data-label="The actual problem">
-          <div class="eyebrow">01 · The actual problem</div>
-          <h2>No time, and an assumption AI has already outgrown</h2>
-          <p class="lede">All we actually know: David spent an hour with Claude and the results were mixed. Underneath that, two separate things are going on — one about time, one about what AI could do until recently.</p>
+        <!-- 4 · The problem -->
+        <section class="slide" data-label="The problem">
+          <div class="eyebrow">01 · The problem</div>
+          <h2>No time to set Claude up, and no proof it would pay off</h2>
+          <p class="lede">Getting Claude to handle FP&amp;A work takes hours of setup, and the team would have to find those hours in a full month for a payoff nobody has shown them. Six months after rollout, adoption sits near zero.</p>
 
-          <div class="grid-2 fill" style="margin-top: 34px;">
-            <div>
-              <h3 class="col-title" style="margin-bottom: 18px;"><span class="tag tag-warm">No time</span></h3>
-              <ul class="bullets lg">
-                <li class="bullet warm" data-icon="clock"><span><b>Back-to-back cycles.</b> Close, BvA, reporting, and board prep run in sequence, with no window to learn something new.</span></li>
-                <li class="bullet warm" data-icon="book"><span><b>One generic hour, org-wide.</b> A tour of the tool, with nothing on FP&amp;A's workflows.</span></li>
-                <li class="bullet warm" data-icon="alert"><span><b>David's mixed result is one data point.</b> What the analysts have tried, if anything, is still unknown.</span></li>
-                <li class="bullet warm" data-icon="shield"><span><b>Adopting a new tool can't cost overtime.</b> Not on top of a cadence that's already full.</span></li>
+          <div class="blockers" style="margin-top: 28px;">
+            <div class="blocker">
+              <div class="blocker-head"><span class="blocker-n">1</span><h3>No time to set it up</h3></div>
+              <ul class="bullets">
+                <li class="bullet warm" data-icon="clock"><span>Close, budget vs. actuals, reporting, and board prep run back to back.</span></li>
+                <li class="bullet warm" data-icon="hammer"><span>Setup means picking the right task, writing prompts, and testing them on real numbers.</span></li>
+                <li class="bullet warm" data-icon="book"><span>The one-hour orientation covered Claude in general, with nothing on FP&amp;A work.</span></li>
               </ul>
             </div>
-            <div>
-              <h3 class="col-title" style="margin-bottom: 18px;"><span class="tag tag-green">Not anymore</span></h3>
-              <ul class="bullets lg">
-                <li class="bullet good" data-icon="layers"><span><b>"Numbers work needs judgment" was true</b> against the AI most people tried first. Judgment and reporting are the finish line, not the starting line.</span></li>
-                <li class="bullet good" data-icon="bar-chart"><span><b>Before judgment comes assembly.</b> Pulling numbers, reconciling, and first-draft commentary — exactly what current Claude is strong at.</span></li>
-                <li class="bullet good" data-icon="sparkles"><span><b>Peer finance teams already run this pattern,</b> Anthropic's own included, with a human on every output (see next).</span></li>
+            <div class="blocker">
+              <div class="blocker-head"><span class="blocker-n">2</span><h3>No proof it pays off</h3></div>
+              <ul class="bullets">
+                <li class="bullet warm" data-icon="alert"><span>David tried a few prompts on his own and got mixed results.</span></li>
+                <li class="bullet warm" data-icon="scale"><span>The team's view: "Our work is numbers-based and requires judgment."</span></li>
+                <li class="bullet warm" data-icon="help"><span>An analyst with a full month won't spend setup hours on a tool with no track record in their work.</span></li>
               </ul>
             </div>
           </div>
 
-          <div class="band" data-icon="arrow-right-circle">
-            <span><b>What it means:</b> the team can't work this out alone without cutting into deliverables, and shouldn't have to — that's the gap outside support closes: peer best practices, tailored to Meridian's own workflows.</span>
+          <div class="pivot"><span data-icon="arrow-down"></span>Bringing in Caylent removes both blockers<span data-icon="arrow-down"></span></div>
+
+          <div class="answers">
+            <div class="answer" data-icon="users">
+              <div><div class="answer-t">We carry the setup</div><div class="answer-d">Caylent runs the interviews, writes the prompts, and builds the first workflow. Each analyst gives about 30 minutes in week 1.</div></div>
+            </div>
+            <div class="answer" data-icon="check-circle">
+              <div><div class="answer-t">We prove the payoff first</div><div class="answer-d">In week 2, each analyst judges a draft of their own recent work. We build from patterns peer finance teams use today.</div></div>
+            </div>
           </div>
           <aside class="notes">
-            <p>Careful with the framing: we don't know what the team thinks of Claude, only that David tried it for an hour and got a mixed result. Don't imply the analysts have judged it themselves.</p>
-            <p>The time constraint is real and structural, not a personality trait: a team with no slack tries something new, gets a mixed early result, and reasonably stops. Anyone would.</p>
-            <p>"Numbers work needs judgment" is stale, not wrong. It was true against earlier models. Current Claude is strong at the assembly work that happens before judgment — pulling numbers, reconciling, drafting — and that's peer-validated, not a Meridian-specific bet.</p>
-            <p>The ask is support, not more work: best practices from peer finance teams, tailored to Meridian, carried by us — not something the team has to figure out on top of their cadence.</p>
+            <p>Two problems, and both are reasonable. Getting value from Claude on FP&amp;A work takes setup: picking the right task, then writing and testing prompts against real numbers. That costs hours, and this team runs close, budget vs. actuals, reporting, and board prep back to back.</p>
+            <p>The second problem is confidence. David tried a few prompts and got mixed results. That's the only first-hand data point we have, so don't claim the analysts have judged Claude themselves.</p>
+            <p>Put the two together and you get what the brief describes: licenses paid for, adoption near zero. Nobody wants to spend hours they don't have on a payoff they haven't seen.</p>
+            <p>On judgment: the analysts are right that the final call needs a person. Claude helps with the work before that call: pulling numbers, reconciling, drafting commentary. The next slide shows peer finance teams doing this.</p>
+            <p>Land the turn: David made the right call bringing us in. We carry the setup, and we show the payoff on the team's own numbers before we ask for more of their time.</p>
           </aside>
         </section>
 
@@ -563,7 +586,7 @@
 
           <div class="weeks-wrap fill" style="margin-top: 24px;">
             <div class="band-row">
-              <span class="cal close">Q3 close · BD1–7</span>
+              <span class="cal close">Q3 close · business days 1–7</span>
               <span class="cal board">Q3 board prep? · confirm at kickoff</span>
             </div>
             <div class="weeks">
@@ -735,7 +758,7 @@
           <aside class="notes">
             <p>End on the next step. P2 makes sense once the team has proven a workflow and owns it. If you automate a workflow the team doesn't trust, you move the problem downstream.</p>
             <p>Anthropic's own guidance on agents: "find the simplest solution possible." Workflows with predefined steps come before open-ended agents. For Meridian, that means a scheduled variance pipeline before anything autonomous.</p>
-            <p>It also gives the PE sponsor a working definition of "AI-enabled finance": a workflow the team owns (P1), then one we automate (P2) — the threshold question the sponsor hasn't answered yet.</p>
+            <p>It also gives the PE sponsor a working definition of "AI-enabled finance": a workflow the team owns (P1), then one we automate (P2). That answers the threshold question the sponsor has left open.</p>
           </aside>
         </section>
 
@@ -768,6 +791,7 @@
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
   const ICONS = {
     "arrow-left": svg('<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'),
+    "arrow-down": svg('<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>'),
     "arrow-right": svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),
     "arrow-right-circle": svg('<circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/>'),
     "chevron-left": svg('<polyline points="15 18 9 12 15 6"/>'),
