@@ -1,0 +1,8 @@
+# Generic toolkit files /initialize copies verbatim from the template repo root.
+# These are engagement-agnostic and maintained in the template repo itself, so an improvement
+# there reaches every new workspace. Keep client-specific content out of these files.
+context/product-manager.md
+prompts/roles/product-manager.md
+rules/quality.md
+# Caylent mascot for the site's nudge widget (binary; copied as-is)
+site/assets/mascot-alien.png

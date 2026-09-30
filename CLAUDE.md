@@ -2,6 +2,8 @@
 
 This repo is a simulated client engagement workspace, not a product codebase. It's Josh Tillson's prep for a Caylent internal interview (Product Manager → Forward-Deployed Product Manager) and doubles as the live "AI setup" used in that interview's demo. Treat every session as continuing work on the same engagement below.
 
+It's also the **template repo** for future engagements. `/initialize` scaffolds a new, client-agnostic workspace from it, and `/onboard-client` fits that workspace to a client. Meridian is the worked example of what a fitted workspace looks like. Don't turn this repo into a generic template, and don't onboard a new client here.
+
 ## The scenario, in brief
 
 **Meridian Capital Services** — PE-backed investment management firm, $195M revenue, 380 employees, acquired 11 months ago under a board-level "AI-enabled operations" mandate. FP&A team of 8 analysts bought Claude enterprise licenses 6 months ago; adoption since has been near zero. The team isn't resistant, just uncertain where a chat tool fits "numbers-based" work that "requires judgment." **David Okafor**, Director of FP&A, hired Caylent because he doesn't have the bandwidth to figure this out alone; there's a kickoff call with him and two analysts. Full detail: `case-file/`.
@@ -22,6 +24,9 @@ This repo is a simulated client engagement workspace, not a product codebase. It
 
 Skills under `.claude/skills/` are auto-discovered by Claude Code and each is directly invocable as `/<name>` — there's no separate command-file layer. Reach for:
 
+- `initialize` — scaffolds a **new** engagement repo from this template: folder tree, README, CLAUDE.md with team collaboration rules, `.gitignore`, `.kanon`, the skill library, and a generic config-driven site dashboard. It then hands off to `publish` for the private GitHub repo and the Evo app. It's client-agnostic and takes no input data. Always pass a target path, because it refuses to write into this repo. It's also linked into `~/.claude/skills/initialize` so it runs from any directory. Everything it lays down lives in `.claude/skills/initialize/` (`templates/`, including the generic `templates/site/`, plus `manifests/skills.txt` and `manifests/shared-files.txt`). Change new workspaces there, not by editing this repo's root files. This repo's own `site/` stays Meridian-specific.
+- `onboard-client` — run inside a freshly initialized workspace with the SOW, proposal, and client context. It extracts cited facts, runs the intake interview (the engagement's level on the P1–P3 complexity ladder: activation → workflow automation → AI-enabled service, plus industry, data, and success criteria), writes the persistent client context, dresses the site in the client's identity, and hands off to `publish`. It doesn't run in this repo (no `context/engagement-profile.md` here).
+- `publish` — commit → pull and push → rebuild the site and publish it to Evo, after one confirmation, with a preflight that blocks secrets and client originals. It works here too: this repo's slug is `meridian-engagement-workspace` (see `site/README.md`). Running it is the explicit go-ahead for `caylent_apps_publish` below.
 - `genai-poc-strategy` — the engagement lifecycle orchestrator (Align → Assess → Design). **Redirect its output**: it defaults to writing `.ai/engagements/<customer-slug>/...`; for this repo, write Align outputs into `discovery/align/`, Assess/Design outputs into `research/`, and the Phase 0 brief into `case-file/00-engagement-brief.md` instead. Reserve `deliverables/` for final, major artifacts only — not this lifecycle's working drafts.
 - `discovery` — for any specific problem/solution decision that needs its own go/no-go. It also defaults to `.ai/engagements/...` or `context/discovery/...` — redirect the same way, into `discovery/`.
 - `presentation-builder` — to lock a deck's narrative arc into its `outline.md` before writing slide HTML.
@@ -37,7 +42,7 @@ Skills under `.claude/skills/` are auto-discovered by Claude Code and each is di
 
 ## Kanon
 
-A `.kanon` manifest at repo root points at a Caylent-published `product-skills` package, but that package is a **stale, older cut** of several skills already ported locally into `.claude/skills/` — confirmed by diff. This repo's local `.claude/skills/` is the source of truth, not the Kanon install. **Do not run `kanon install`** without asking first — it mutates global `~/.claude/settings.json`, and the catalog path in `.kanon` currently only resolves on an unmerged branch, not `main`.
+A `.kanon` manifest at repo root points at a Caylent-published `product-skills` package, but that package is a **stale, older cut** of several skills already ported locally into `.claude/skills/` — confirmed by diff. This repo's local `.claude/skills/` is the source of truth, not the Kanon install. **Do not run `kanon install`** without asking first — it mutates global `~/.claude/settings.json`. (The catalog path in `.kanon` resolves on `main` as of 2026-09-30. Earlier it only resolved on an unmerged branch.)
 
 ## Git conventions
 
@@ -45,4 +50,4 @@ A `.kanon` manifest at repo root points at a Caylent-published `product-skills` 
 
 ## What not to do automatically
 
-- Don't run `kanon install` (see above) or `caylent_apps_publish` (publishing the landing page to Evo) without explicit go-ahead — both have effects outside this repo.
+- Don't run `kanon install` (see above) or `caylent_apps_publish` (publishing the landing page to Evo) without explicit go-ahead — both have effects outside this repo. For Evo, `/publish` is the go-ahead path.

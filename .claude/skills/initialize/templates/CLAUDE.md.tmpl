@@ -1,0 +1,98 @@
+# CLAUDE.md
+
+This repo is a Caylent forward-deployed engagement workspace: the working notebook for one client engagement, not a product codebase. It was scaffolded by `/initialize` from `{{TEMPLATE_REPO}}` @ `{{TEMPLATE_COMMIT}}` on {{DATE}}, then fitted to the client by `/onboard-client`. Treat every session as continuing work on the engagement below.
+
+## The engagement, in brief
+
+<!-- onboard-client:begin claude-summary -->
+<!-- onboard-client:default -->
+**Not onboarded yet.** This workspace is still client-agnostic. Run `/onboard-client` next and attach the SOW or proposal. Until then, don't write client facts anywhere: there are none on record.
+<!-- onboard-client:end claude-summary -->
+
+The canonical record is `context/engagement-profile.md`. Read it before starting any engagement work, and update its change log when scope, dates, or people change.
+
+## Directory map: what belongs where
+
+- `case-file/`: facts as given (SOW and proposal summaries, company profile, stakeholders). Every claim is cited. Speculation goes in `discovery/`. Original documents live in `case-file/source/`.
+- `discovery/`: the motion to find more (pain points, discovery questions, value charter, session designs). Anything not cited to a source document or a real conversation is labeled `hypothesis — validate` until confirmed. Keep that discipline when adding to these files.
+- `research/`: the point of view. Full-prose strategy documents and supporting evidence that back the decks.
+- `deliverables/`: final, major engagement artifacts, plus the SOW deliverables tracker in `deliverables/README.md`. Working drafts don't belong here.
+- `presentations/`: one folder per deck (`registry.md` lists them), plain HTML, no build step.
+- `context/`: persistent context every skill reads (`engagement-profile.md`, `engagement-team.md`, role context).
+- `meeting-notes/`, `status-updates/`: working folders, populated as the engagement runs.
+- `.claude/skills/`, `prompts/`, `rules/`: the tooling (below).
+- `.ai/tasks/`: task-planning documents for multi-step initiatives.
+- `site/`, `index.html`, `scripts/`: the workspace dashboard, rendered entirely from `site/workspace.config.js` and the generated `site/content-index.js`. After adding or renaming documents, run `node scripts/build-site-index.mjs` (`/publish` does this for you). Don't edit page code to change content. See `site/README.md`.
+<!-- onboard-client:begin claude-directories -->
+<!-- onboard-client:end claude-directories -->
+
+## Evidence discipline
+
+- Cite facts inline: `[Source: SOW §4.2]`, `[Source: proposal p.3]`, `[Source: kickoff call 2026-10-02]`, `[Source: Salesforce opp]`.
+- Label inference `hypothesis — validate`. Replace the label with a citation once a real conversation confirms it.
+- When two sources disagree, keep both with citations and flag the conflict. Don't silently pick one.
+- Never fabricate evidence. "No evidence found" is a valid finding.
+
+## Engagement guardrails
+
+<!-- onboard-client:begin claude-guardrails -->
+<!-- onboard-client:default -->
+Defaults until `/onboard-client` sets engagement-specific rules:
+- Treat every client document as confidential.
+- Don't paste client material into external services, public artifacts, or shared links without explicit go-ahead.
+- Customer-facing artifacts use the client's own terminology, not Caylent-internal jargon.
+<!-- onboard-client:end claude-guardrails -->
+
+## Tooling
+
+Skills under `.claude/skills/` are auto-discovered by Claude Code, and each one runs directly as `/<name>`.
+
+**Start here:** `/onboard-client` turns this client-agnostic scaffold into the client's workspace: SOW and proposal intake, the intake interview, repo tailoring, and the site's client identity. Re-run it when a change order, a new SOW, or significant new context arrives.
+
+**Ship with** `/publish`: commit → pull and push → rebuild the site and publish it to Evo, after one confirmation. It's the only sanctioned way to publish the Evo app.
+
+Engagements run at one of three levels of complexity, each building on the one before. **P1** is Claude activation: prompts, Projects, and skills in the Claude UI. **P2** adds workflow automation: connectors, triggers, Claude Code / Agent SDK builds. **P3** is an AI-enabled service: a mature, governed, monitored Claude implementation the client runs. The engagement's level is in `context/engagement-profile.md`.
+
+- `genai-poc-strategy`: the engagement lifecycle orchestrator (Align → Assess → Design). **Redirect its output.** It defaults to `.ai/engagements/<customer-slug>/...`. In this repo, Align outputs go in `discovery/align/`, Assess and Design outputs go in `research/`, and the Phase 0 brief goes in `case-file/00-engagement-brief.md`. `deliverables/` is for final artifacts only.
+- `discovery`: a go/no-go on one specific problem or solution. It also defaults to `.ai/engagements/...` or `context/discovery/...`. Redirect it into `discovery/` the same way.
+- `presentation-builder`: locks a deck's narrative arc into its `outline.md` before anyone writes slide HTML.
+- `research-synthesis`: themes from raw research (transcripts, verbatims, tickets), each backed by cited quotes.
+- `meeting-prep`, `interview-guide`, `meeting-summary`, `meeting-followup`: the meeting loop. Summaries land in `meeting-notes/`.
+- `status-update`, `stakeholder-digest`, `week-ahead`: reporting. Updates land in `status-updates/`.
+- `task-planning`, `step-execution`, `step-loop`: any multi-step initiative. Plans live in `.ai/tasks/YYYY-MM-DD/<slug>/`.
+- `stop-slop`: strips AI writing tells from substantial prose before it goes in front of the client, including new site copy in `site/workspace.config.js`.
+- Installed `cce-capabilities:*` plugin skills (stakeholder-map, discovery-question-generator, value-charter-workshop-design, and others) work as point tools for single artifacts inside the lifecycle. They don't replace it.
+
+## Kanon
+
+The `.kanon` manifest at repo root declares the Caylent `product-skills` package. `kanon install` clones it into `.packages/` (gitignored), links a marketplace into `~/.claude-marketplaces/`, and registers that marketplace in the global `~/.claude/settings.json`. The package is an older cut of skills that already exist locally, so this repo's `.claude/skills/` is the source of truth when the two differ. **Don't run `kanon install` without asking first**, because it changes global settings.
+
+## Working together in this repo
+
+Several consultants, and their Claude sessions, share this workspace. Follow these rules in every session:
+
+- **Start synced.** At the start of a session, `git fetch` and check `git status -sb`. If the branch is behind and the tree is clean, `git pull --rebase` before editing. If there are local changes, tell the user before pulling.
+- **Stage only your own work.** Commit only what changed in this session. Leave other people's in-progress files alone. Before rewriting a file someone else changed recently (`git log -1 --format='%an, %ar' -- <file>`), ask.
+- **Small, described commits.** One logical change per commit. The summary is imperative and 72 characters or fewer ("Add kickoff question bank"), with an optional body for the why. Commit only when the user asks, or through `/publish`.
+- **Branch for shared structure.** Engagement content (notes, discovery, research, status) can go straight to `main`. Changes other people build on go through a short-lived branch and a PR (`gh pr create`): `CLAUDE.md`, `.claude/`, `site/` code, `scripts/`, and SOW re-baselines.
+- **Never rewrite shared history.** No force-push, no `reset --hard` or rebase of pushed commits, no skipped hooks. If a push is rejected, pull with rebase and retry. If that conflicts, stop and resolve it with the user.
+- **Resolve content conflicts on the facts.** In a Markdown conflict, keep both sides' facts with their citations, and flag the disagreement per Evidence discipline. Don't pick a side silently.
+- **One source of truth per fact.** Update the canonical file (engagement profile, deliverables tracker, stakeholders) rather than restating a fact somewhere new, and link to it.
+- **Leave a trail.** Name yourself in the engagement profile's change log, in meeting notes (who took them), and in status updates (who wrote them).
+- **Keep secrets and personal settings out.** No credentials, tokens, or `.env` files, and no client originals while `case-file/source/` is local-only. Personal Claude settings go in `.claude/settings.local.json` (ignored). `.claude/settings.json` is shared, so change it through a PR.
+- **`main` is what's published.** `/publish` builds the Evo app from `main`. Don't publish from a branch unless it's an explicit preview.
+
+## Git conventions
+
+- **Don't add `Co-Authored-By: Claude` or any AI attribution line to commits in this repo.** This overrides the default Claude Code attribution behavior.
+<!-- onboard-client:begin claude-git -->
+<!-- onboard-client:default -->
+- Client source documents in `case-file/source/` are local-only (gitignored) by default. `/onboard-client` records the team's decision here.
+<!-- onboard-client:end claude-git -->
+
+## What not to do automatically
+
+- Don't run `kanon install`.
+- Don't publish or share anything outside this repo without explicit go-ahead: shared docs, Slack posts, emails, Jira tickets. The Evo app goes out through `/publish` only, and running it is the go-ahead.
+- Don't push, create repos, or change Evo app access outside `/publish`.
+- Edit `onboard-client` marker blocks through `/onboard-client` (Add context / Re-baseline) so the engagement profile's change log stays accurate. If you hand-edit one, add a change-log row yourself.

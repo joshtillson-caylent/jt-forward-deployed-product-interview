@@ -1,0 +1,34 @@
+# Skill folders /initialize copies from the template repo's .claude/skills/ into a new workspace.
+# One name per line. Curated on purpose: a skill added to the template repo does not ship to
+# new workspaces until it's listed here (verify.sh flags template skills missing from this list).
+# `initialize` itself is deliberately absent — it runs from ~/.claude/skills, not from inside
+# each workspace.
+
+# Workspace lifecycle
+onboard-client
+publish
+
+# Engagement lifecycle
+genai-poc-strategy
+discovery
+research-synthesis
+presentation-builder
+
+# Meetings
+meeting-prep
+interview-guide
+meeting-summary
+meeting-followup
+
+# Reporting
+status-update
+stakeholder-digest
+week-ahead
+
+# Planning & execution
+task-planning
+step-execution
+step-loop
+
+# Utility
+stop-slop

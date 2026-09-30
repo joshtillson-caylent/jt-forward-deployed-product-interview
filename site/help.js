@@ -6,6 +6,14 @@ import { esc } from "./util.js";
 // Code / plugin catalog available in a session.
 const SKILL_GROUPS = [
   {
+    label: "New engagements",
+    skills: [
+      { cmd: "/initialize", desc: "Scaffolds a new engagement repo from this one: folders, README, CLAUDE.md, Kanon, the skill library, and its own dashboard. No client details yet." },
+      { cmd: "/onboard-client", desc: "Fits a new workspace to its client. Reads the SOW and proposal, asks what kind of engagement it is, and writes the client context every other skill uses." },
+      { cmd: "/publish", desc: "Commits, pushes, and republishes this site to Evo, after one confirmation." },
+    ],
+  },
+  {
     label: "Engagement strategy",
     skills: [
       { cmd: "/genai-poc-strategy", desc: "The Align → Assess → Design lifecycle: client intake, use-case scoring, personas and journeys, value measurement. Run it end to end or one phase at a time." },

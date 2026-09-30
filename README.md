@@ -16,6 +16,16 @@ Josh Tillson's working repo for the final-round Caylent interview to move from P
 open index.html
 ```
 
+## Starting a new engagement from this repo
+
+This repo is also the template for future engagement workspaces. Meridian is the worked example.
+
+1. `/initialize ~/Documents/GitHub/<new-engagement>` scaffolds a new, client-agnostic workspace: the folder tree, README, CLAUDE.md, `.gitignore`, `.kanon`, the skill library, and a config-driven dashboard. It then offers to create the private GitHub repo and publish the dashboard to Evo. It works from any directory, because it's linked into `~/.claude/skills/`.
+2. Open Claude Code in the new repo and run `/onboard-client` with the SOW, proposal, and any client context attached. It fits the repo and the dashboard to the client.
+3. From then on, `/publish` commits, pushes, and republishes the dashboard.
+
+What new workspaces get is controlled in `.claude/skills/initialize/`. See its `MANIFEST.md`.
+
 ## Repo layout
 
 ```

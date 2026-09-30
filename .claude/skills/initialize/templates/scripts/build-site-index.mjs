@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+// Builds site/content-index.js: the list of documents and decks the dashboard shows.
+//
+// For every section in site/workspace.config.js with a `folder`, it lists the folder's Markdown
+// files (recursively, README.md excluded unless pinned), taking each file's title from its first
+// "# " heading and its description from its first plain paragraph. Decks come from the table in
+// presentations/registry.md. Output is deterministic (no timestamps), so re-running it on an
+// unchanged repo produces no diff.
+//
+// Usage: node scripts/build-site-index.mjs     (build-evo.mjs and /publish run it automatically)
+
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const INDEX_PATH = join(ROOT, "site", "content-index.js");
+
+const read = (p) => readFileSync(join(ROOT, p), "utf8");
+
+function stripMeta(md) {
+  return md
+    .replace(/\r\n/g, "\n")
+    .replace(/^---\n[\s\S]*?\n---\n/, "") // YAML frontmatter
+    .replace(/<!--[\s\S]*?-->/g, ""); // HTML comments, including onboard-client markers
+}
+
+function plain(text) {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function truncate(text, max = 180) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.]$/, "")}…`;
+}
+
+/** { title, desc } from a Markdown document. */
+export function describe(md, fallbackTitle) {
+  const lines = stripMeta(md).split("\n");
+  let title = "";
+  let desc = "";
+  let inFence = false;
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (line.startsWith("```")) { inFence = !inFence; continue; }
+    if (inFence || !line) continue;
+    const h1 = line.match(/^#\s+(.+)$/);
+    if (h1 && !title) { title = plain(h1[1]); continue; }
+    if (desc || /^#{2,6}\s/.test(line)) break; // the description is the intro, before the first subheading
+    const skip =
+      /^(#{1,6}\s|\||[-*+]\s|\d+\.\s|>|<)/.test(line) || // headings, tables, lists, quotes, html
+      /^\*\*[^*]+:\*\*/.test(line) || // "**Source:** …" style metadata lines
+      /^_.*_$/.test(line); // italic-only notes
+    if (!skip) desc = truncate(plain(line));
+  }
+  return { title: title || fallbackTitle, desc };
+}
+
+function markdownFiles(dir) {
+  const abs = join(ROOT, dir);
+  if (!existsSync(abs)) return [];
+  return readdirSync(abs)
+    .sort()
+    .flatMap((name) => {
+      if (name.startsWith(".")) return [];
+      const p = join(dir, name);
+      if (statSync(join(ROOT, p)).isDirectory()) return markdownFiles(p);
+      return name.endsWith(".md") && name !== "README.md" ? [p] : [];
+    });
+}
+
+function sortDocs(paths, section) {
+  const depth = (p) => p.split("/").length;
+  if (section.sort === "newest") return [...paths].sort((a, b) => b.split("/").pop().localeCompare(a.split("/").pop()));
+  // Numbered files first (00-engagement-brief.md), then top-level before subfolders, then by path.
+  const numbered = (p) => (/^\d/.test(p.split("/").pop()) ? 0 : 1);
+  return [...paths].sort((a, b) => numbered(a) - numbered(b) || depth(a) - depth(b) || a.localeCompare(b));
+}
+
+function parseRegistry() {
+  const path = "presentations/registry.md";
+  if (!existsSync(join(ROOT, path))) return [];
+  const rows = read(path).split("\n").filter((l) => /^\s*\|/.test(l)).slice(2); // drop header + divider
+  return rows
+    .map((row) => row.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim().replace(/`/g, "")))
+    .filter(([slug]) => slug)
+    .map(([slug, title, status, audience, deckPath]) => {
+      const dir = (deckPath || `presentations/${slug}/`).replace(/\/?$/, "/");
+      const readme = join(dir, "README.md");
+      const desc = existsSync(join(ROOT, readme)) ? describe(read(readme), title).desc : "";
+      return { slug, title, status, audience, path: `${dir}index.html`, desc };
+    })
+    .filter((deck) => existsSync(join(ROOT, deck.path)));
+}
+
+export async function buildIndex() {
+  const { SECTIONS } = await import(pathToFileURL(join(ROOT, "site", "workspace.config.js")).href);
+  const folders = {};
+  for (const section of SECTIONS) {
+    if (!section.folder) continue;
+    if (!existsSync(join(ROOT, section.folder))) continue; // optional overlays stay hidden until created
+    const pinned = (section.pinned || []).filter((p) => existsSync(join(ROOT, p)));
+    const docs = [...pinned, ...sortDocs(markdownFiles(section.folder), section)].map((p) => ({
+      path: relative(ROOT, join(ROOT, p)),
+      ...describe(read(p), p.split("/").pop().replace(/\.md$/, "")),
+      pinned: pinned.includes(p) || undefined,
+    }));
+    folders[section.folder] = docs;
+  }
+  const index = { folders, decks: parseRegistry() };
+  const js =
+    "// Generated by scripts/build-site-index.mjs. Don't edit by hand: re-run the script after adding\n" +
+    "// or renaming documents (/publish runs it automatically).\n" +
+    `export const CONTENT_INDEX = ${JSON.stringify(index, null, 2)};\n`;
+  writeFileSync(INDEX_PATH, js);
+  return index;
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const index = await buildIndex();
+  const docCount = Object.values(index.folders).reduce((n, docs) => n + docs.length, 0);
+  console.log(`site/content-index.js  ${docCount} docs in ${Object.keys(index.folders).length} folders, ${index.decks.length} decks`);
+}

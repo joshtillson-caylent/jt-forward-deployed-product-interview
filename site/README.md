@@ -30,6 +30,6 @@ Evo's CSP only allows scripts from `https://app.evo.caylent.com/sdk/` plus inlin
 
 1. `node scripts/build-evo.mjs` writes `dist/evo/index.html` (gitignored). It inlines `styles.css` and every module, embeds the case-file, discovery, and research Markdown plus the kickoff deck, and rewrites every `src="<relative path>.png/.jpg"` (the mascot widget, the deck's intro-slide photos) into a base64 data URI. Evo doesn't proxy nested asset paths under `/apps/<slug>/`, and the deck's `srcdoc` iframe doesn't reliably resolve relative URLs against the parent page either — so any raster image reachable from `site/` or `presentations/kickoff-deck/` must be self-contained to survive publishing. Add new images the same way (a plain relative `src=`) and the build script will inline them automatically.
 2. `caylent_apps_publish` with slug `meridian-engagement-workspace`, listing only `index.html` (`text/html`), then `curl -X PUT` the file to the returned URL.
-3. Get Josh's go-ahead first (root `CLAUDE.md`).
+3. Get Josh's go-ahead first (root `CLAUDE.md`). Running `/publish` does steps 1–2 (plus the commit and push) after one confirmation.
 
 Locally, serve the repo over HTTP (`python3 -m http.server`) so the doc reader can fetch Markdown. Opening `index.html` from disk works for everything except in-app docs.

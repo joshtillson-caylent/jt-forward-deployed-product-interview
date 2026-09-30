@@ -1,0 +1,13 @@
+.DS_Store
+.vscode/
+.idea/
+.claude/settings.local.json
+dist/
+
+# Kanon install output. The manifest (.kanon) and lockfile (.kanon.lock) stay tracked.
+.packages/
+
+# Client source documents (SOWs, proposals, client files) are local-only by default: they
+# carry commercial and legal terms. /onboard-client removes this line if the team decides
+# to track originals in git. The cited Markdown summaries in case-file/ are always tracked.
+case-file/source/
